@@ -1,0 +1,106 @@
+{
+  "users": [
+    {
+      "firstname": "12",
+      "lastname": "12",
+      "email": "Q@D.asaa",
+      "password": "asdasassas",
+      "role": "admin",
+      "gender": "admin",
+      "birthday": "2000-11-12",
+      "nation": "",
+      "id": 7
+    },
+    {
+      "firstname": "as",
+      "lastname": "as",
+      "email": "a@sf.c",
+      "password": "asasasas",
+      "role": "admin",
+      "gender": "officeAdmin",
+      "birthday": "1000-02-27",
+      "nation": "",
+      "id": 8
+    },
+    {
+      "firstname": "test1",
+      "lastname": "test1",
+      "email": "test@1.com",
+      "password": "testtest",
+      "role": "admin",
+      "gender": "admin",
+      "birthday": "",
+      "nation": "",
+      "id": 9
+    },
+    {
+      "firstname": "newname",
+      "lastname": "test2",
+      "email": "test@2.t",
+      "password": "testtest",
+      "role": "admin",
+      "gender": "admin",
+      "birthday": "Not set",
+      "nation": "",
+      "id": 10
+    },
+    {
+      "firstname": "123",
+      "lastname": "123",
+      "email": "123@gmail.com",
+      "password": "123123123",
+      "role": "employee",
+      "gender": "employee",
+      "birthday": "2022-02-27",
+      "nation": "tyrmen",
+      "id": 11
+    },
+    {
+      "firstname": "12",
+      "lastname": "12",
+      "email": "selim@ad.c",
+      "password": "12121212",
+      "role": "officeAdmin",
+      "gender": "officeAdmin",
+      "birthday": "",
+      "nation": "",
+      "id": 12
+    },
+    {
+      "active": true,
+      "firstname": "testas",
+      "lastname": "test",
+      "email": "test@as.c",
+      "password": "sasasasa",
+      "role": "employee",
+      "gender": "admin",
+      "birthday": "",
+      "nation": "",
+      "id": 13
+    },
+    {
+      "active": true,
+      "firstname": "bool",
+      "lastname": "bool",
+      "email": "bool@a.com",
+      "password": "asasasaas",
+      "role": "admin",
+      "gender": "admin",
+      "birthday": "",
+      "nation": "",
+      "id": 14
+    },
+    {
+      "active": true,
+      "firstname": "postman",
+      "lastname": "postman",
+      "email": "post@ma.n",
+      "password": "asasasasas",
+      "role": "officeAdmin",
+      "gender": "officeAdmin",
+      "birthday": "",
+      "nation": "",
+      "id": 15
+    }
+  ]
+}
