@@ -3,47 +3,35 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // api functions
-import { deleteUser, getallUsers } from "../../utils/api";
+import { deleteBuilding, getallBuildings } from "../../utils/api";
 
-// AddUser form component
-import AddUser from "./AddUser";
+// AddBuilding form component
+import AddBuilding from "./AddBuilding";
 
-// headers
-const headers = [
-  "#",
-  "Active",
-  "First",
-  "Last",
-  "Email",
-  "Password",
-  "Role",
-  "Gender",
-  "Birthday",
-  "Nation",
-  "Actions",
-];
+// Header items
+const headers = ["#", "Name", "Floors", "Address", "Actions"];
 
 // main function
-function Users() {
+function Buildings() {
   // navigate
   const history = useNavigate();
 
-  // user state
-  const [user, setUser] = useState([]);
+  // building state
+  const [building, setBuilding] = useState([]);
   useEffect(() => {
-    getUsers();
+    getBuildings();
   }, []);
 
   // fetch function
-  const getUsers = async () => {
-    const response = await getallUsers();
-    setUser(response.data);
+  const getBuildings = async () => {
+    const response = await getallBuildings();
+    setBuilding(response.data);
   };
 
   // delete function
   const deleteData = async (id) => {
-    await deleteUser(id);
-    getUsers();
+    await deleteBuilding(id);
+    getBuildings();
   };
 
   // form toggler
@@ -56,16 +44,16 @@ function Users() {
   return (
     // page container
     <div className="pl-60 w-full h-full flex flex-col items-end justify-start p-12">
-      {/* addUser button */}
+      {/* addBuilding button */}
       <button
         onClick={toggleForm}
         className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
       >
-        {formOpen ? <span>Close</span> : <span>Add new user</span>}
+        {formOpen ? <span>Close</span> : <span>Add new building</span>}
       </button>
       {formOpen ? (
         <div className="py-10 w-full">
-          <AddUser />
+          <AddBuilding />
         </div>
       ) : null}
       {/* table container */}
@@ -81,45 +69,24 @@ function Users() {
               ))}
             </tr>
           </thead>
-          {user.map((data) => (
+          {building.map((data) => (
+            // console.log(data),
             <tbody className="border-b hover:bg-gray-200 transition-all">
               <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
+
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.active}
-                {data.active == "true" ? (
-                  <div className="bg-green-400 h-3 w-3 rounded-full" />
-                ) : (
-                  <div className="bg-red-400 h-3 w-3 rounded-full" />
-                )}
+                {data.name}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.firstname}
+                {data.floors}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.lastname}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.email}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.password}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.role}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.gender}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.birthday !== "" ? data.birthday : <p>Not set</p>}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.nation !== "" ? data.nation : <p>Not set</p>}
+                {data.address}
               </td>
               <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap">
                 <button
                   className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                  onClick={() => history(`/edituser/${data.id}`)}
+                  onClick={() => history(`/editbuilding/${data.id}`)}
                 >
                   Edit
                 </button>
@@ -129,8 +96,11 @@ function Users() {
                 >
                   Del
                 </button>
-                <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
-                  Assign
+                <button
+                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
+                  onClick={() => history(`/seeBuilding/${data.id}`)}
+                >
+                  See
                 </button>
               </td>
             </tbody>
@@ -141,4 +111,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Buildings;

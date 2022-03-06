@@ -1,49 +1,46 @@
 // react imports
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // api functions
-import { deleteUser, getallUsers } from "../../utils/api";
+import { deleteOffice, getallOffices } from "../../utils/api";
 
-// AddUser form component
-import AddUser from "./AddUser";
+// AddOffice form component
+import AddOffice from "./AddOffice";
 
 // headers
 const headers = [
   "#",
-  "Active",
-  "First",
-  "Last",
-  "Email",
-  "Password",
-  "Role",
-  "Gender",
-  "Birthday",
-  "Nation",
+  "Office",
+  "Building",
+  "Floor",
+  "Occupancy",
+  "Size(w/h)",
+  "Office Admin",
   "Actions",
 ];
 
 // main function
-function Users() {
+function Offices() {
   // navigate
   const history = useNavigate();
 
-  // user state
-  const [user, setUser] = useState([]);
+  // office state
+  const [office, setOffice] = useState([]);
   useEffect(() => {
-    getUsers();
+    getOffices();
   }, []);
 
   // fetch function
-  const getUsers = async () => {
-    const response = await getallUsers();
-    setUser(response.data);
+  const getOffices = async () => {
+    const response = await getallOffices();
+    setOffice(response.data);
   };
 
   // delete function
   const deleteData = async (id) => {
-    await deleteUser(id);
-    getUsers();
+    await deleteOffice(id);
+    getOffices();
   };
 
   // form toggler
@@ -55,17 +52,17 @@ function Users() {
   // all renders
   return (
     // page container
-    <div className="pl-60 w-full h-full flex flex-col items-end justify-start p-12">
-      {/* addUser button */}
+    <div className="pl-52 w-full h-full flex flex-col items-end justify-start p-12">
+      {/* addOffice button */}
       <button
         onClick={toggleForm}
         className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
       >
-        {formOpen ? <span>Close</span> : <span>Add new user</span>}
+        {formOpen ? <span>Close</span> : <span>Add new office</span>}
       </button>
       {formOpen ? (
         <div className="py-10 w-full">
-          <AddUser />
+          <AddOffice />
         </div>
       ) : null}
       {/* table container */}
@@ -81,45 +78,41 @@ function Users() {
               ))}
             </tr>
           </thead>
-          {user.map((data) => (
+          {office.map((data) => (
             <tbody className="border-b hover:bg-gray-200 transition-all">
               <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
+
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.active}
-                {data.active == "true" ? (
-                  <div className="bg-green-400 h-3 w-3 rounded-full" />
-                ) : (
-                  <div className="bg-red-400 h-3 w-3 rounded-full" />
+                {data.office}
+              </td>
+              <td className="px-5 py-3 text-sm whitespace-nowrap">
+                {data.building}
+              </td>
+              <td className="px-5 py-3 text-sm whitespace-nowrap">
+                {data.floor}
+              </td>
+              <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-pointer">
+                {Math.round(
+                  (parseInt(data.usableDesk) / parseInt(data.totalDesk)) * 100
                 )}
+                %{/* tooltip */}
+                <span className="absolute -right-1 top-0 border text-xs border-gray-800 transition-all duration-300 p-2 rounded-md scale-0 group-hover:scale-100">
+                  <div className="flex flex-col">
+                    <p>Total: {data.totalDesk}</p>
+                    <p>Usable: {data.usableDesk}</p>
+                  </div>
+                </span>
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.firstname}
+                {data.width}/{data.height}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.lastname}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.email}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.password}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.role}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.gender}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.birthday !== "" ? data.birthday : <p>Not set</p>}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.nation !== "" ? data.nation : <p>Not set</p>}
+                {data.oadmin}
               </td>
               <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap">
                 <button
                   className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                  onClick={() => history(`/edituser/${data.id}`)}
+                  onClick={() => history(`/editbuilding/${data.id}`)}
                 >
                   Edit
                 </button>
@@ -128,9 +121,6 @@ function Users() {
                   onClick={() => deleteData(data.id)}
                 >
                   Del
-                </button>
-                <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
-                  Assign
                 </button>
               </td>
             </tbody>
@@ -141,4 +131,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Offices;

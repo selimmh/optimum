@@ -1,106 +1,244 @@
 {
   "users": [
     {
-      "firstname": "12",
-      "lastname": "12",
-      "email": "Q@D.asaa",
-      "password": "asdasassas",
-      "role": "admin",
-      "gender": "admin",
-      "birthday": "2000-11-12",
-      "nation": "",
-      "id": 7
+      "id": 1,
+      "active": "false",
+      "firstname": "Melly",
+      "lastname": "Wisdom",
+      "email": "mwisdom0@plala.or.jp",
+      "password": "NyxGtvq",
+      "role": "employee",
+      "gender": "Female",
+      "birthday": "13/07/1985",
+      "nation": "Malaysia"
     },
     {
-      "firstname": "as",
-      "lastname": "as",
-      "email": "a@sf.c",
-      "password": "asasasas",
+      "id": 2,
+      "active": "true",
+      "firstname": "Tull",
+      "lastname": "MacCawley",
+      "email": "tmaccawley1@phpbb.com",
+      "password": "pLFsFKc",
       "role": "admin",
-      "gender": "officeAdmin",
-      "birthday": "1000-02-27",
-      "nation": "",
-      "id": 8
+      "gender": "Male",
+      "birthday": "04/05/1982",
+      "nation": "China"
     },
     {
-      "firstname": "test1",
-      "lastname": "test1",
-      "email": "test@1.com",
-      "password": "testtest",
+      "id": 3,
+      "active": "true",
+      "firstname": "Willa",
+      "lastname": "Scupham",
+      "email": "wscupham2@illinois.edu",
+      "password": "2lfUz45SU",
+      "role": "employee",
+      "gender": "Male",
+      "birthday": "28/01/1968",
+      "nation": "Russia"
+    },
+    {
+      "id": 4,
+      "active": "true",
+      "firstname": "Haywood",
+      "lastname": "Dunstone",
+      "email": "hdunstone3@photobucket.com",
+      "password": "DuBL3IpF0nS5",
       "role": "admin",
-      "gender": "admin",
+      "gender": "Male",
+      "birthday": "28/07/1974",
+      "nation": "Russia"
+    },
+    {
+      "id": 5,
+      "active": "false",
+      "firstname": "Alfie",
+      "lastname": "Trevorrow",
+      "email": "atrevorrow4@etsy.com",
+      "password": "6N5qsWnX",
+      "role": "employee",
+      "gender": "Male",
+      "birthday": "06/08/1973",
+      "nation": "Yemen"
+    },
+    {
+      "id": 6,
+      "active": "true",
+      "firstname": "Gardiner",
+      "lastname": "Seiler",
+      "email": "gseiler5@bigcartel.com",
+      "password": "exBxkH",
+      "role": "admin",
+      "gender": "Male",
+      "birthday": "11/05/1982",
+      "nation": "Ecuador"
+    },
+    {
+      "id": 7,
+      "active": "false",
+      "firstname": "Benton",
+      "lastname": "Channer",
+      "email": "bchanner6@ycombinator.com",
+      "password": "opR7tytYTL",
+      "role": "employee",
+      "gender": "Non-binary",
+      "birthday": "23/11/1989",
+      "nation": "Finland"
+    },
+    {
+      "id": 8,
+      "active": "true",
+      "firstname": "Deanne",
+      "lastname": "MacKeague",
+      "email": "dmackeague7@comcast.net",
+      "password": "ShCaSTA",
+      "role": "admin",
+      "gender": "Female",
+      "birthday": "22/12/1974",
+      "nation": "Bangladesh"
+    },
+    {
+      "id": 9,
+      "active": "false",
+      "firstname": "Jacob",
+      "lastname": "Rablen",
+      "email": "jrablen8@canalblog.com",
+      "password": "pIadwmRXUmjr",
+      "role": "employee",
+      "gender": "Female",
+      "birthday": "17/05/1971",
+      "nation": "Czech Republic"
+    },
+    {
+      "id": 10,
+      "active": "false",
+      "firstname": "Margit",
+      "lastname": "Lorait",
+      "email": "mlorait9@redcross.org",
+      "password": "JRW1glzpc",
+      "role": "admin",
+      "gender": "Female",
+      "birthday": "17/11/1985",
+      "nation": "France"
+    },
+    {
+      "active": "true",
+      "firstname": "test",
+      "lastname": "test",
+      "email": "",
+      "password": "",
+      "role": "admin",
+      "gender": "male",
       "birthday": "",
       "nation": "",
-      "id": 9
-    },
-    {
-      "firstname": "newname",
-      "lastname": "test2",
-      "email": "test@2.t",
-      "password": "testtest",
-      "role": "admin",
-      "gender": "admin",
-      "birthday": "Not set",
-      "nation": "",
-      "id": 10
-    },
-    {
-      "firstname": "123",
-      "lastname": "123",
-      "email": "123@gmail.com",
-      "password": "123123123",
-      "role": "employee",
-      "gender": "employee",
-      "birthday": "2022-02-27",
-      "nation": "tyrmen",
       "id": 11
     },
     {
-      "firstname": "12",
-      "lastname": "12",
-      "email": "selim@ad.c",
-      "password": "12121212",
-      "role": "officeAdmin",
-      "gender": "officeAdmin",
+      "active": "true",
+      "firstname": "test",
+      "lastname": "test",
+      "email": "",
+      "password": "",
+      "role": "Office Admin",
+      "gender": "Female",
       "birthday": "",
       "nation": "",
       "id": 12
+    }
+  ],
+  "buildings": [
+    {
+      "name": "Building 1",
+      "floors": 12,
+      "address": "Str Universitatii",
+      "id": 1
     },
     {
-      "active": true,
-      "firstname": "testas",
-      "lastname": "test",
-      "email": "test@as.c",
-      "password": "sasasasa",
-      "role": "employee",
-      "gender": "admin",
-      "birthday": "",
-      "nation": "",
-      "id": 13
+      "name": "Building 2",
+      "floors": 14,
+      "address": "Str Universitatii",
+      "id": 2
     },
     {
-      "active": true,
-      "firstname": "bool",
-      "lastname": "bool",
-      "email": "bool@a.com",
-      "password": "asasasaas",
-      "role": "admin",
-      "gender": "admin",
-      "birthday": "",
-      "nation": "",
-      "id": 14
+      "name": "Building 3",
+      "floors": 16,
+      "address": "Str Universitatii",
+      "id": 3
     },
     {
-      "active": true,
-      "firstname": "postman",
-      "lastname": "postman",
-      "email": "post@ma.n",
-      "password": "asasasasas",
-      "role": "officeAdmin",
-      "gender": "officeAdmin",
-      "birthday": "",
-      "nation": "",
-      "id": 15
+      "name": "Building 4",
+      "floors": 18,
+      "address": "Str Universitatii",
+      "id": 4
+    },
+    {
+      "name": "Building 5",
+      "floors": 20,
+      "address": "Str Universitatii",
+      "id": 5
+    },
+    {
+      "name": "Building 6",
+      "floors": 22,
+      "address": "Str Universitatii",
+      "id": 6
+    },
+    {
+      "name": "Building 7",
+      "floors": 24,
+      "address": "Str Universitatii",
+      "id": 7
+    },
+    {
+      "name": "Building 8",
+      "floors": 10,
+      "address": "Str Universitatii",
+      "id": 8
+    }
+  ],
+  "offices": [
+    {
+      "office": "Office 1",
+      "building": "Building 1",
+      "floor": 2,
+      "totalDesk": "33",
+      "usableDesk": "32",
+      "oadmin": "Melody",
+      "width": "34",
+      "height": "12",
+      "id": 1
+    },
+    {
+      "office": "Office 2",
+      "building": "Building 2",
+      "floor": 4,
+      "totalDesk": "45",
+      "usableDesk": "12",
+      "oadmin": "Agosh",
+      "width": "34",
+      "height": "12",
+      "id": 2
+    },
+    {
+      "office": "test",
+      "building": "waw",
+      "floor": "55",
+      "totalDesk": "21",
+      "usableDesk": "3",
+      "oadmin": "Deanne MacKeague",
+      "width": "34",
+      "height": "12",
+      "id": 3
+    },
+    {
+      "office": "test",
+      "building": "7",
+      "floor": "1",
+      "totalDesk": "34",
+      "usableDesk": "32",
+      "width": "45",
+      "height": "66",
+      "oadmin": "Not Assigned",
+      "id": 4
     }
   ]
 }

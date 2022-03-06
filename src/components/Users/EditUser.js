@@ -3,8 +3,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { editUser, getallUsers } from "../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
+import { bool } from "yup";
 
 const initialValue = {
+  active: "",
   firstname: "",
   lastname: "",
   email: "",
@@ -16,15 +18,9 @@ const initialValue = {
 };
 
 function Edit() {
-  const formik = useFormik({
-    validationSchema: Yup.object({
-      name: Yup.string().max(15, "Too long").required("Required"),
-      username: Yup.string().max(20, "Too long").required("Required"),
-      email: Yup.string().email("Invalid email").required("Required"),
-    }),
-  });
   const [user, setUser] = useState(initialValue);
   const {
+    active,
     firstname,
     lastname,
     email,
@@ -49,8 +45,6 @@ function Edit() {
   const history = useNavigate();
 
   const onValueChange = (e) => {
-    //  console.log(e);
-    // console.log(e.target.value);
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user);
   };
@@ -62,7 +56,19 @@ function Edit() {
   return (
     <div className="pl-40 w-full h-full flex items-center justify-center">
       {/* form */}
-      <form className="w-1/2 bg-gray-100 shadow-2xl rounded-lg p-4 flex flex-col space-y-4">
+      <form className="w-1/2 bg-gray-100 shadow-2xl rounded-lg p-4 flex flex-col items-center space-y-4">
+        {/* active */}
+        <select
+          value={active}
+          id="active"
+          name="active"
+          className="w-full"
+          onChange={(e) => onValueChange(e)}
+        >
+          <option value={null}>Status</option>
+          <option value="true">Active</option>
+          <option value="false">Not Active</option>
+        </select>
         {/* first name */}
         <input
           value={firstname}
@@ -70,10 +76,9 @@ function Edit() {
           name="firstname"
           type="firstname"
           placeholder="First Name"
-          className="p-2"
+          className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
-
         {/* last name */}
         <input
           value={lastname}
@@ -81,10 +86,9 @@ function Edit() {
           name="username"
           type="text"
           placeholder="Username"
-          className="p-2"
+          className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
-
         {/* email */}
         <input
           value={email}
@@ -92,10 +96,9 @@ function Edit() {
           name="email"
           type="text"
           placeholder="Email"
-          className="p-2"
+          className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
-
         {/* password */}
         <input
           value={password}
@@ -103,10 +106,9 @@ function Edit() {
           name="password"
           type="text"
           placeholder="Password"
-          className="p-2"
+          className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
-
         {/* role */}
         <select
           value={role}
@@ -116,11 +118,10 @@ function Edit() {
           onChange={(e) => onValueChange(e)}
         >
           <option value="">Select Role</option>
-          <option value="admin">Admin</option>
-          <option value="officeAdmin">Office Admin</option>
-          <option value="employee">Employee</option>
+          <option value="Admin">Admin</option>
+          <option value="Office Admin">Office Admin</option>
+          <option value="Employee">Employee</option>
         </select>
-
         {/* gender */}
         <select
           value={gender}
@@ -130,11 +131,10 @@ function Edit() {
           onChange={(e) => onValueChange(e)}
         >
           <option value="">Select Gender</option>
-          <option value="admin">Male</option>
-          <option value="officeAdmin">Female</option>
-          <option value="employee">Other</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
         </select>
-
         {/* birthday */}
         <input
           value={birthday}
@@ -142,10 +142,9 @@ function Edit() {
           name="birthday"
           type="date"
           placeholder="Birthday"
-          className="w-full h-full p-2"
+          className="w-full p-2"
           onChange={(e) => onValueChange(e)}
         />
-
         {/* Nation */}
         <input
           value={nation}
@@ -153,10 +152,9 @@ function Edit() {
           name="nation"
           type="text"
           placeholder="Nationality"
-          className="p-2"
+          className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
-
         <button
           className="w-52 h-10 border-2 border-gray-800 hover:bg-gray-800 hover:text-white"
           onClick={() => editUserDetails()}
