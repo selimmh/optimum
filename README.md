@@ -1,3 +1,7 @@
+# Frontend for ASSIST Tech Challenge
+
+This is private repository for ASSIST Tech Challenge, Office management app.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
