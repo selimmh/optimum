@@ -1,7 +1,16 @@
 import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.headers.common['Authorization'] = "AuthToken"
+
+
+//login
+export const loginUser = async (values) => {
+  console.log(values);
+  return await axios.post('/login', {values})
+}
 
 // users
-const usersUrl = "http://localhost:8000/users";
+const usersUrl = `/users`;
 
 export const getallUsers = async (id) => {
   id = id || "";
@@ -21,7 +30,7 @@ export const deleteUser = async (id) => {
 };
 
 // buildings
-const buildingsUrl = "http://localhost:8000/buildings";
+const buildingsUrl = `/buildings`;
 
 export const getallBuildings = async (id) => {
   id = id || "";
@@ -40,7 +49,7 @@ export const deleteBuilding = async (id) => {
 };
 
 // offices
-const officesUrl = "http://localhost:8000/offices";
+const officesUrl = `/offices`;
 
 export const getallOffices = async (id) => {
   id = id || "";
