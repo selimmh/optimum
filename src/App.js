@@ -7,6 +7,7 @@ import Users from "./components/Users/Users";
 import Buildings from "./components/Buildings/Buildings";
 import Offices from "./components/Offices/Offices";
 import Assignments from "./components/Assignments";
+import Login from './pages/Login/Login'
 import Logout from "./components/Logout";
 
 // components with id
@@ -22,6 +23,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/users" element={<Users />}></Route>
           <Route path="/buildings" element={<Buildings />}></Route>
           <Route path="/offices" element={<Offices />}></Route>

@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "active": "true",
-      "firstname": "Melly",
+      "active": "false",
+      "firstname": "agosh",
       "lastname": "Wisdom",
       "email": "mwisdom0@plala.or.jp",
       "password": "NyxGtvq",
@@ -95,6 +95,18 @@
       "gender": "Female",
       "birthday": "17/05/1971",
       "nation": "Czech Republic"
+    },
+    {
+      "active": "true",
+      "firstname": "lorem",
+      "lastname": "ipsum",
+      "email": "sdjnfjs@nsjdf.com",
+      "password": "lorem@fndjf95",
+      "role": "Admin",
+      "gender": "Male",
+      "birthday": "2021-10-01",
+      "nation": "roman",
+      "id": 10
     }
   ],
   "buildings": [
