@@ -13,6 +13,7 @@ import Logout from "./components/Logout";
 import EditUser from "./components/Users/EditUser";
 import EditBuilding from "./components/Buildings/EditBuilding";
 import SeeBuilding from "./components/Buildings/SeeBuilding";
+import Assign from "./components/Users/Assign";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/edituser/:id" element={<EditUser />} exact />
           <Route path="/editbuilding/:id" element={<EditBuilding />} exact />
           <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
+          <Route path="/assignDesk/:id" element={<Assign />} exact />
         </Routes>
       </Router>
     </div>

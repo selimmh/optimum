@@ -129,8 +129,14 @@ function Users() {
                 >
                   Del
                 </button>
-                <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
+                <button
+                  onClick={() => history(`/assignDesk/${data.id}`)}
+                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
+                >
                   Assign
+                </button>
+                <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
+                  De-Assign
                 </button>
               </td>
             </tbody>

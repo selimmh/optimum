@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "active": "false",
+      "active": "true",
       "firstname": "Melly",
       "lastname": "Wisdom",
       "email": "mwisdom0@plala.or.jp",
@@ -34,18 +34,6 @@
       "role": "employee",
       "gender": "Male",
       "birthday": "28/01/1968",
-      "nation": "Russia"
-    },
-    {
-      "id": 4,
-      "active": "true",
-      "firstname": "Haywood",
-      "lastname": "Dunstone",
-      "email": "hdunstone3@photobucket.com",
-      "password": "DuBL3IpF0nS5",
-      "role": "admin",
-      "gender": "Male",
-      "birthday": "28/07/1974",
       "nation": "Russia"
     },
     {
@@ -107,42 +95,6 @@
       "gender": "Female",
       "birthday": "17/05/1971",
       "nation": "Czech Republic"
-    },
-    {
-      "id": 10,
-      "active": "false",
-      "firstname": "Margit",
-      "lastname": "Lorait",
-      "email": "mlorait9@redcross.org",
-      "password": "JRW1glzpc",
-      "role": "admin",
-      "gender": "Female",
-      "birthday": "17/11/1985",
-      "nation": "France"
-    },
-    {
-      "active": "true",
-      "firstname": "test",
-      "lastname": "test",
-      "email": "",
-      "password": "",
-      "role": "admin",
-      "gender": "male",
-      "birthday": "",
-      "nation": "",
-      "id": 11
-    },
-    {
-      "active": "true",
-      "firstname": "test",
-      "lastname": "test",
-      "email": "",
-      "password": "",
-      "role": "Office Admin",
-      "gender": "Female",
-      "birthday": "",
-      "nation": "",
-      "id": 12
     }
   ],
   "buildings": [
