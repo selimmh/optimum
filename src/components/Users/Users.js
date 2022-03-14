@@ -89,8 +89,8 @@ function Users() {
         {formOpen ? <span>Close</span> : <span>Add new user</span>}
       </button>
 
-      <button className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white ">
-        Filter
+      <button onClick={toggleForm} className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white ">
+      {formOpen ? <span>Filter</span> : <span>Filter</span>}
       </button>
 
       <input
@@ -131,67 +131,7 @@ function Users() {
               ))}
             </tr>
           </thead>
-          {user.map((data) => (
-            <tbody className="border-b hover:bg-gray-200 transition-all">
-              <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-
-                {data.active === true ? (
-                  <div className="bg-green-400 h-3 w-3 rounded-full" />
-                ) : (
-                  <div className="bg-red-400 h-3 w-3 rounded-full" />
-                )}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.firstname}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.lastname}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.email}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.password}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.role}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.gender}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.birthday !== "" ? data.birthday : <p>Not set</p>}
-              </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.nation !== "" ? data.nation : <p>Not set</p>}
-              </td>
-              <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap">
-                <button
-                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                  onClick={() => history(`/edituser/${data.id}`)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                  onClick={() => deleteData(data.id)}
-                >
-                  Del
-                </button>
-                <button
-                  onClick={() => history(`/assignDesk/${data.id}`)}
-                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                >
-                  Assign
-                </button>
-                <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
-                  De-Assign
-                </button>
-              </td>
-            </tbody>
-          ))}
-          {/* {user.map((data) => ( */}
+                    {/* {user.map((data) => ( */}
           {user
             .filter(
               (data) =>
@@ -204,10 +144,10 @@ function Users() {
               <>
                 {/* <div>{data.id}</div>§ */}
                 <tbody className="border-b hover:bg-gray-200 transition-all">
-                  <td className="px-5 py-3 text-sm whitespace-nowrap">numbr</td>
+                  <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
                     {/* {data.active} */}
-                    {data.active == "true" ? (
+                    {data.active === true ? (
                       <span class="flex h-3 w-3 relative">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -252,8 +192,8 @@ function Users() {
                       </p>
                       <p>
                         Nationality:{" "}
-                        {data.nation !== "" ? (
-                          data.nation
+                        {data.nationality !== "" ? (
+                          data.nationality
                         ) : (
                           <span>Not set</span>
                         )}
@@ -271,7 +211,7 @@ function Users() {
                   </td> */}
                   <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
                     <AiOutlineSetting className="text-2xl" />
-                    <div className="origin-right right-[70%] -top-[180%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
+                    <div className="origin-right right-[70%] -top-[180%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-20 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
                       <button
                         onClick={() => history(`/assignDesk/${data.id}`)}
                         className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"

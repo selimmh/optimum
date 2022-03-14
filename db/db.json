@@ -1,37 +1,42 @@
 {
   "users": [
     {
-      "active": "true",
-      "firstname": "agosh",
-      "lastname": "durdyyev",
+      "firstname": "sdfsdfsg",
+      "lastname": "dfgdfgdfg",
       "email": "agoshmr@gmail.com",
-      "password": "Ahasdndjeldsf@jsdnfj2",
+      "password": "Ahasdndjeldsdf#d1sf",
       "role": "Admin",
       "gender": "Male",
-      "birthday": "2000-02-02",
-      "nation": "turkmen",
-      "id": 1
-    },
-    {
+      "birthday": "2000-02-09",
+      "nationality": "sndfjnsdjf",
       "active": true,
-      "firstname": "bogdan",
-      "lastname": "bogdan",
-      "email": "bogdan@gmail.com",
-      "password": "12345678@dJ",
-      "role": "Admin",
-      "gender": "Male",
-      "birthday": "2000-02-02",
-      "nation": "turkmen",
+      "hashedPass": "",
       "id": 2
     },
     {
-      "active": "false",
-      "firstname": "ahmad",
-      "lastname": "muhammad",
-      "email": "ahmad@gmail.com",
-      "password": "Ahasdndjeldsf2S@",
+      "firstname": "sdfsdf",
+      "lastname": "sdfsdfsdfsfsd",
+      "email": "agoshmr@gmail.com",
+      "password": "#3Ahasdndjeldsf",
       "role": "Admin",
       "gender": "Male",
+      "birthday": "2022-02-02",
+      "nationality": "tsdfsdfdfsdfs",
+      "active": true,
+      "hashedPass": "",
+      "id": 3
+    },
+    {
+      "firstname": "fsdfdsf",
+      "lastname": "sdfsd",
+      "email": "agoshmr@gmail.com",
+      "password": "Ahasdndjeldsfsdfsd@d1",
+      "role": "Office Admin",
+      "gender": "Female",
+      "birthday": "2022-09-09",
+      "nationality": "dsfsdfssdfsdf",
+      "active": true,
+      "id": 4
     }
   ],
   "buildings": [
