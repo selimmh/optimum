@@ -18,7 +18,7 @@ function AddUser(props) {
   // initial values
   const formik = useFormik({
     initialValues: {
-      active: "true",
+      active: true,
       firstname: "",
       lastname: "",
       email: "",
@@ -67,7 +67,7 @@ function AddUser(props) {
       // reset form
       formik.resetForm();
       // refresh page
-      window.location.reload(false);
+      // window.location.reload(false);
     },
   });
 

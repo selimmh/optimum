@@ -85,8 +85,8 @@ function Users() {
             <tbody className="border-b hover:bg-gray-200 transition-all">
               <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.active}
-                {data.active == "true" ? (
+
+                {data.active === true ? (
                   <div className="bg-green-400 h-3 w-3 rounded-full" />
                 ) : (
                   <div className="bg-red-400 h-3 w-3 rounded-full" />

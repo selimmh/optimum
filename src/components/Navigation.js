@@ -6,6 +6,7 @@ import { HiOfficeBuilding } from "react-icons/hi";
 import { GiOfficeChair } from "react-icons/gi";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { MdAssignmentInd } from "react-icons/md";
+import { MdOutlineHomeWork } from "react-icons/md";
 
 function NavItem(props) {
   let navigate = useNavigate();
@@ -26,10 +27,10 @@ function NavItem(props) {
 function Navbar() {
   return (
     // page container
-    <div className="bg-gray-800 text-white h-screen w-48 fixed top-0 left-0 bottom-0 p-5">
+    <div className="bg-gray-800 text-white h-screen w-30 fixed top-0 left-0 bottom-0 p-5">
       {/* nav container */}
       <div className="flex flex-col w-full h-full justify-between">
-        {/* prfile */}
+        {/* profile */}
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-20 h-20 bg-white rounded-full" />
           <h2>Melody Cock</h2>
@@ -53,6 +54,11 @@ function Navbar() {
             icon={<MdAssignmentInd />}
             navItem="Assignments"
             navigate="/assignments"
+          />
+          <NavItem
+            icon={<MdOutlineHomeWork />}
+            navItem="Remote Work"
+            navigate="/remotework"
           />
         </div>
         <div>
