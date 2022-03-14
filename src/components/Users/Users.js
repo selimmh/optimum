@@ -27,6 +27,9 @@ const headers = [
   "",
 ];
 
+// index
+// let index = 0;
+
 // main function
 function Users() {
   // navigate
@@ -61,12 +64,19 @@ function Users() {
   console.log(query);
 
   // more details
-
   const [isOpen, setOpen] = useState(false);
   const toggleMore = (id) => {
     !isOpen ? setOpen(true) : setOpen(false);
   };
 
+  // checkbox
+
+  const [isAdminChecked, setAdminChecked] = useState(false);
+  const toggleAdminCheckBox = () => {
+    !isAdminChecked ? setAdminChecked(true) : setAdminChecked(false);
+    !isAdminChecked ? setQuery("admin") : setQuery("");
+    console.log(isAdminChecked);
+  };
   // all renders
   return (
     // page container
@@ -91,6 +101,18 @@ function Users() {
         className="border p-2 focus:border-red-500"
         onChange={(e) => setQuery(e.target.value)}
       />
+      <label htmlFor="admin">
+        {" "}
+        <input
+          type="checkbox"
+          name="admin"
+          value="admin"
+          id=""
+          // onChange={(e) => setQuery(e.target.value)}
+          onClick={toggleAdminCheckBox}
+        />
+        Admins
+      </label>
       {formOpen ? (
         <div className="py-10 w-full">
           <AddUser />
@@ -115,14 +137,14 @@ function Users() {
               (data) =>
                 data.firstname.toLowerCase().includes(query) ||
                 data.lastname.toLowerCase().includes(query) ||
-                data.email.toLowerCase().includes(query)
+                data.email.toLowerCase().includes(query) ||
+                data.role.toLowerCase().includes(query)
             )
             .map((data) => (
               <>
+                {/* <div>{data.id}</div>§ */}
                 <tbody className="border-b hover:bg-gray-200 transition-all">
-                  <td className="px-5 py-3 text-sm whitespace-nowrap">
-                    {data.id}
-                  </td>
+                  <td className="px-5 py-3 text-sm whitespace-nowrap">numbr</td>
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
                     {/* {data.active} */}
                     {data.active == "true" ? (
@@ -158,7 +180,7 @@ function Users() {
 
                   <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
                     <AiOutlineInfoCircle className="text-2xl" />
-                    <div className="flex flex-col absolute right-[80%] -top-[50%] z-10 w-fit h-fit border-2 px-4 pt-2 scale-0 text-white bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300 ">
+                    <div className="origin-right flex flex-col absolute right-[70%] -top-[180%] z-10 w-fit h-fit border-2 px-4 pt-2 scale-0 text-white bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300 ">
                       <p>Gender: {data.gender}</p>
                       <p>
                         Birthday:{" "}
@@ -189,7 +211,7 @@ function Users() {
                   </td> */}
                   <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
                     <AiOutlineSetting className="text-2xl" />
-                    <div className="-right-[50%] -top-[150%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
+                    <div className="origin-right right-[70%] -top-[180%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
                       <button
                         onClick={() => history(`/assignDesk/${data.id}`)}
                         className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"

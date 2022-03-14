@@ -107,6 +107,32 @@
       "birthday": "2021-10-01",
       "nation": "roman",
       "id": 10
+    },
+    {
+      "active": "true",
+      "firstname": "test",
+      "lastname": "test",
+      "email": "",
+      "password": "Password*1",
+      "hashedPass": "",
+      "role": "Admin",
+      "gender": "Male",
+      "birthday": "",
+      "nation": "",
+      "id": 11
+    },
+    {
+      "active": "true",
+      "firstname": "test",
+      "lastname": "test",
+      "email": "",
+      "password": "Salam*10",
+      "hashedPass": "",
+      "role": "Employee",
+      "gender": "Male",
+      "birthday": "",
+      "nation": "",
+      "id": 12
     }
   ],
   "buildings": [

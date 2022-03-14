@@ -7,6 +7,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import moment from "moment";
 
+// encryption packages
+
 // api functions
 import { addUser } from "../../utils/api";
 
@@ -14,6 +16,9 @@ import { addUser } from "../../utils/api";
 function AddUser(props) {
   // navigate
   const history = useNavigate();
+
+  // encrypt
+  const bcrypt = require("bcryptjs");
 
   // initial values
   const formik = useFormik({
@@ -23,6 +28,7 @@ function AddUser(props) {
       lastname: "",
       email: "",
       password: "",
+      hashedPass: "",
       role: "",
       gender: "",
       birthday: "",
@@ -62,12 +68,20 @@ function AddUser(props) {
 
     // submit
     onSubmit: (values) => {
+      console.log(values.password);
+      // hash
+      bcrypt.genSalt().then((salt) => {
+        bcrypt.hash(values.password, salt).then((hashedPass) => {
+          console.log(hashedPass);
+        });
+      });
+
       // add values
       addUser(values);
       // reset form
       formik.resetForm();
       // refresh page
-      window.location.reload(false);
+      // window.location.reload(false);
     },
   });
 
