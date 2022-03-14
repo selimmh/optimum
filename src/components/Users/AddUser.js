@@ -1,13 +1,11 @@
-// react imports
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // validation packages
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import moment from "moment";
+// import moment from "moment";
 
-// encryption packages
 
 // api functions
 import { addUser } from "../../utils/api";
@@ -20,27 +18,33 @@ function AddUser(props) {
   // encrypt
   const bcrypt = require("bcryptjs");
 
+  const hashPassword =  (initPass) => {
+    let password = bcrypt.hash(initPass, 10)
+    console.log(password);
+    // return await bcrypt.hash(initPass, 10)
+  }
+
   // initial values
   const formik = useFormik({
     initialValues: {
-      active: true,
       firstname: "",
       lastname: "",
       email: "",
-      password: "",
-      hashedPass: "",
       role: "",
       gender: "",
       birthday: "",
-      nation: "",
+      nationality: "",
+      active: true,
+      initPass: "",
+      password: "",
     },
 
     // validation
     validationSchema: Yup.object({
-      firstname: Yup.string().max(15, "Too long").required("*Required"),
-      lastname: Yup.string().max(20, "Too long").required("*Required"),
+      firstname: Yup.string().max(30, "Too long").required("*Required"),
+      lastname: Yup.string().max(30, "Too long").required("*Required"),
       email: Yup.string().email("Invalid email").notRequired("*Required"),
-      password: Yup.string()
+      initPass: Yup.string()
         .min(8, "At least 8 charachters")
         .notRequired("*Required")
         .matches(
@@ -67,14 +71,9 @@ function AddUser(props) {
     }),
 
     // submit
-    onSubmit: (values) => {
-      console.log(values.password);
-      // hash
-      bcrypt.genSalt().then((salt) => {
-        bcrypt.hash(values.password, salt).then((hashedPass) => {
-          console.log(hashedPass);
-        });
-      });
+    onSubmit: async (values) => {
+
+      values.password =  await bcrypt.hash(values.initPass, await bcrypt.genSalt());
 
       // add values
       addUser(values);
@@ -84,6 +83,8 @@ function AddUser(props) {
       // window.location.reload(false);
     },
   });
+
+
 
   // all renders
   return (
@@ -153,18 +154,18 @@ function AddUser(props) {
         {/* password input */}
         <div>
           <input
-            id="password"
-            name="password"
+            id="initPass"
+            name="initPass"
             type="password"
             placeholder="Password"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.password}
+            value={formik.values.initPass}
           />
           {/* password errors */}
-          {formik.touched.password && formik.errors.password ? (
-            <p className="text-red-500 text-xs">{formik.errors.password}</p>
+          {formik.touched.initPass && formik.errors.initPass ? (
+            <p className="text-red-500 text-xs">{formik.errors.initPass}</p>
           ) : null}
         </div>
         {/* role input */}
@@ -225,21 +226,21 @@ function AddUser(props) {
             <p className="text-red-500 text-xs">{formik.errors.birthday}</p>
           ) : null}
         </div>
-        {/* nation input */}
+        {/* nationality input */}
         <div>
           <input
-            id="nation"
-            name="nation"
+            id="nationality"
+            name="nationality"
             type="text"
             placeholder="Nationality"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.nation}
+            value={formik.values.nationality}
           />
           {/* nation errrors */}
-          {formik.touched.nation && formik.errors.nation ? (
-            <p className="text-red-500 text-xs">{formik.errors.nation}</p>
+          {formik.touched.nationality && formik.errors.nationality ? (
+            <p className="text-red-500 text-xs">{formik.errors.nationality}</p>
           ) : null}
         </div>
         {/* actions */}
