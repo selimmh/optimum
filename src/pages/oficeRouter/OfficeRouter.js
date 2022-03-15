@@ -46,17 +46,18 @@ function OfficeRouter() {
     <>
       <Navigation />
       <Routes>
-        <Route path="remotework" element={<RemoteRequest />}></Route>
-        <Route path="users" element={<Users />}></Route>
+        {/* <Route path="remotework" element={<RemoteRequest />}></Route> */}
+
         <Route path="buildings" element={<Buildings />}></Route>
         <Route path="offices" element={<Offices />}></Route>
-        <Route path="assignments" element={<Assignments />}></Route>
-        <Route path="logout" element={<Logout />}></Route>
+        <Route path="users" element={<Users />}></Route>
+        {/* <Route path="assignments" element={<Assignments />}></Route> */}
+        {/* <Route path="logout" element={<Logout />}></Route> */}
 
-        <Route path="edituser/:id" element={<EditUser />} exact />
-        <Route path="editbuilding/:id" element={<EditBuilding />} exact />
-        <Route path="seeBuilding/:id" element={<SeeBuilding />} exact />
-        <Route path="assignDesk/:id" element={<Assign />} exact />
+        {/* <Route path="edituser/:id" element={<EditUser />} exact /> */}
+        {/* <Route path="editbuilding/:id" element={<EditBuilding />} exact /> */}
+        {/* <Route path="seeBuilding/:id" element={<SeeBuilding />} exact /> */}
+        {/* <Route path="assignDesk/:id" element={<Assign />} exact /> */}
       </Routes>
     </>
   );

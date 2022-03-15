@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react";
 import {Navigate} from 'react-router-dom';
+import Cookies from "js-cookie";
 export const CoreContext = createContext();
 
 function CoreContextProvider(props) {
@@ -30,7 +31,7 @@ function CoreContextProvider(props) {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8080/login", requestOptions)
+    fetch("http://465b-46-97-177-99.ngrok.io/login", requestOptions)
       .then(async (response) => {
         if (response.ok) {
           setStep(1);
@@ -40,6 +41,8 @@ function CoreContextProvider(props) {
           setRole(data.role);
 
           setAccessToken(data.accessToken);
+          Cookies.set("accessToken", accessToken);
+          Cookies.set("refreshToken", refreshToken);
           resolve(200);
 
         } else {
@@ -56,7 +59,10 @@ function CoreContextProvider(props) {
   const [newUserEmail, setNewUserEmail] = useState("");
   const [newUserId, setNewUserId] = useState("");
   function AddUser() {
-    var myHeaders = new Headers();
+    var myHeaders  = {
+      "Authorization": accessToken,
+      "Content-Type": "application/json"
+    };
     myHeaders.append("Authorization", accessToken);
     myHeaders.append("Content-Type", "application/json");
 
@@ -81,7 +87,7 @@ function CoreContextProvider(props) {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8080/user", requestOptions)
+    fetch("http://465b-46-97-177-99.ngrok.io/user", requestOptions)
       .then(async (response) => {
         if (response.ok) {
           setNewUserId("success");
@@ -105,6 +111,7 @@ function CoreContextProvider(props) {
     setPassword,
     password,
     setLoggedIn,
+    accessToken
   };
 
 

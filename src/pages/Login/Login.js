@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CoreContext } from "../../context";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 function LoginPage() {
   const { setEmail, setPassword, Login } = useContext(CoreContext);
+
   const navigator = useNavigate();
   return (
     <div className="flex h-screen items-center justify-center">
@@ -25,6 +27,14 @@ function LoginPage() {
         />
         <div
         className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        onKeyPress={ (e) => {
+          if (e.key === 'Enter' ){
+            let status = Login()
+            console.log(status)
+            if(status===200){
+              navigator("/");}
+            }}}
+
           onClick={async() => {
             let status = await Login();
             console.log(status)
@@ -39,5 +49,4 @@ function LoginPage() {
     </div>
   );
 }
-
 export default LoginPage;
