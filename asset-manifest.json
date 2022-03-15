@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/optimum/static/css/main.5655becc.css",
+    "main.js": "/optimum/static/js/main.d421c545.js",
+    "index.html": "/optimum/index.html",
+    "main.5655becc.css.map": "/optimum/static/css/main.5655becc.css.map",
+    "main.d421c545.js.map": "/optimum/static/js/main.d421c545.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5655becc.css",
+    "static/js/main.d421c545.js"
+  ]
+}
