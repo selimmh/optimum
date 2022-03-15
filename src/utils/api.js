@@ -1,5 +1,6 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8080/";
+axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.headers.common['Authorization'] = "AuthToken"
 
 
 //login
@@ -8,18 +9,16 @@ export const loginUser = async (values) => {
   return await axios.post('/login', {values})
 }
 
-// user
-const usersUrl = `/user`;
+// users
+const usersUrl = `/users`;
 
 export const getallUsers = async (id) => {
   id = id || "";
-
   return await axios.get(`${usersUrl}/${id}`);
 };
 
-export const addUser = async (values) => {
-  console.log(values)
-  return await axios.post('/user', values);
+export const addUser = async (user) => {
+  return await axios.post(usersUrl, user);
 };
 
 export const editUser = async (id, user) => {

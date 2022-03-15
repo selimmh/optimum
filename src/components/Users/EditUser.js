@@ -4,9 +4,9 @@ import * as Yup from "yup";
 import { editUser, getallUsers } from "../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { bool } from "yup";
-import Users from './Users'
+
 const initialValue = {
-  active: true,
+  active: "",
   firstname: "",
   lastname: "",
   email: "",
@@ -16,7 +16,6 @@ const initialValue = {
   birthday: "",
   nation: "",
 };
-console.log(initialValue)
 
 function Edit() {
   const [user, setUser] = useState(initialValue);
@@ -66,9 +65,9 @@ function Edit() {
           className="w-full"
           onChange={(e) => onValueChange(e)}
         >
-          <option value={true}>Active</option>
-          <option value={false}>Not Active</option>
-
+          <option value={null}>Status</option>
+          <option value="true">Active</option>
+          <option value="false">Not Active</option>
         </select>
         {/* first name */}
         <input

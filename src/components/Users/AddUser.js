@@ -1,11 +1,11 @@
+// react imports
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // validation packages
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import moment from "moment";
-
+import moment from "moment";
 
 // api functions
 import { addUser } from "../../utils/api";
@@ -15,36 +15,26 @@ function AddUser(props) {
   // navigate
   const history = useNavigate();
 
-  // encrypt
-  const bcrypt = require("bcryptjs");
-
-  const hashPassword =  (initPass) => {
-    let password = bcrypt.hash(initPass, 10)
-    console.log(password);
-    // return await bcrypt.hash(initPass, 10)
-  }
-
   // initial values
   const formik = useFormik({
     initialValues: {
+      active: "true",
       firstname: "",
       lastname: "",
       email: "",
+      password: "",
       role: "",
       gender: "",
       birthday: "",
-      nationality: "",
-      active: true,
-      initPass: "",
-      password: "",
+      nation: "",
     },
 
     // validation
     validationSchema: Yup.object({
-      firstname: Yup.string().max(30, "Too long").required("*Required"),
-      lastname: Yup.string().max(30, "Too long").required("*Required"),
+      firstname: Yup.string().max(15, "Too long").required("*Required"),
+      lastname: Yup.string().max(20, "Too long").required("*Required"),
       email: Yup.string().email("Invalid email").notRequired("*Required"),
-      initPass: Yup.string()
+      password: Yup.string()
         .min(8, "At least 8 charachters")
         .notRequired("*Required")
         .matches(
@@ -71,20 +61,15 @@ function AddUser(props) {
     }),
 
     // submit
-    onSubmit: async (values) => {
-
-      values.password =  await bcrypt.hash(values.initPass, await bcrypt.genSalt());
-
+    onSubmit: (values) => {
       // add values
       addUser(values);
       // reset form
       formik.resetForm();
       // refresh page
-      // window.location.reload(false);
+      window.location.reload(false);
     },
   });
-
-
 
   // all renders
   return (
@@ -154,18 +139,18 @@ function AddUser(props) {
         {/* password input */}
         <div>
           <input
-            id="initPass"
-            name="initPass"
+            id="password"
+            name="password"
             type="password"
             placeholder="Password"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.initPass}
+            value={formik.values.password}
           />
           {/* password errors */}
-          {formik.touched.initPass && formik.errors.initPass ? (
-            <p className="text-red-500 text-xs">{formik.errors.initPass}</p>
+          {formik.touched.password && formik.errors.password ? (
+            <p className="text-red-500 text-xs">{formik.errors.password}</p>
           ) : null}
         </div>
         {/* role input */}
@@ -226,21 +211,21 @@ function AddUser(props) {
             <p className="text-red-500 text-xs">{formik.errors.birthday}</p>
           ) : null}
         </div>
-        {/* nationality input */}
+        {/* nation input */}
         <div>
           <input
-            id="nationality"
-            name="nationality"
+            id="nation"
+            name="nation"
             type="text"
             placeholder="Nationality"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.nationality}
+            value={formik.values.nation}
           />
           {/* nation errrors */}
-          {formik.touched.nationality && formik.errors.nationality ? (
-            <p className="text-red-500 text-xs">{formik.errors.nationality}</p>
+          {formik.touched.nation && formik.errors.nation ? (
+            <p className="text-red-500 text-xs">{formik.errors.nation}</p>
           ) : null}
         </div>
         {/* actions */}

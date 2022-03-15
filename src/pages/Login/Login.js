@@ -1,52 +1,132 @@
-import React, { useContext, useEffect } from "react";
-import { CoreContext } from "../../context";
-import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+import React from 'react'
+import  {loginUser} from "../../utils/api";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
-function LoginPage() {
-  const { setEmail, setPassword, Login } = useContext(CoreContext);
 
-  const navigator = useNavigate();
+const Login = () => {
+    const initialValues = {
+        email: "",
+        password: "",
+    }
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+          .email("Looks like this is not an email")
+          .required("Email cannot be empty"),
+        password: Yup.string().required("Password cannot be empty"),
+      });
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center">
-      <label class="block text-gray-700 text-sm font-bold mb-2 mr-44" for="username">
-        Email
-      </label>
-        <input
-        type="email"
-        onChange={(e) => setEmail(e.target.value)} placeholder="email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3" />
-              <label class="block text-gray-700 text-sm font-bold mb-2 mr-44" for="username">
-        Password
-      </label>
-        <input
-        type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="password"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3"
-        />
-        <div
-        className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onKeyPress={ (e) => {
-          if (e.key === 'Enter' ){
-            let status = Login()
-            console.log(status)
-            if(status===200){
-              navigator("/");}
-            }}}
 
-          onClick={async() => {
-            let status = await Login();
-            console.log(status)
-            if(status===200){
-              navigator("/");
-            }
-          }}
-        >
-          Login
-        </div>
-      </div>
-    </div>
-  );
+    <Formik
+    initialValues={initialValues}
+    validationSchema={validationSchema}
+    onSubmit={loginUser}
+  >
+    <Form className="w-full overflow-auto rounded-lg shadow-lg">
+      <Field name="email">
+        {({ field, form }) => (
+          <div className="relative">
+            <label htmlFor="email" aria-label="Email" className="hidden">
+              Email
+            </label>
+            <input
+              {...field}
+              className="w-full p-4 font-semibold placeholder-gray-500 border rounded-lg outline-none lg:px-8 focus:ring-accent-blue focus:ring-1"
+              placeholder="Email"
+              type="text"
+              name="email"
+              id="email"
+              style={
+                form.touched.email && form.errors.email
+                  ? { border: "2px solid var(--primary-red)" }
+                  : null
+              }
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="absolute w-10 text-primary-red right-8 top-2.5"
+              style={
+                form.touched.email && form.errors.email
+                  ? { display: "block" }
+                  : { display: "none" }
+              }
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        )}
+      </Field>
+      <ErrorMessage
+        name="email"
+        component="div"
+        className="text-xs italic text-right text-primary-red"
+        style={{ marginTop: "0.5rem" }}
+      />
+      <Field name="password">
+        {({ field, form }) => (
+          <div className="relative">
+            <label
+              htmlFor="password"
+              aria-label="Password"
+              className="hidden"
+            >
+              Password
+            </label>
+            <input
+              {...field}
+              className="w-full p-4 font-semibold placeholder-gray-500 border rounded-lg outline-none lg:px-8 focus:ring-accent-blue focus:ring-1"
+              placeholder="Password"
+              type="password"
+              name="password"
+              id="password"
+              style={
+                form.touched.password && form.errors.password
+                  ? { border: "2px solid var(--primary-red)" }
+                  : null
+              }
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="absolute w-10 text-primary-red right-8 top-2.5"
+              style={
+                form.touched.password && form.errors.password
+                  ? { display: "block" }
+                  : { display: "none" }
+              }
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        )}
+      </Field>
+      <ErrorMessage
+        name="password"
+        component="div"
+        className="text-xs italic text-right text-primary-red"
+        style={{ marginTop: "0.5rem" }}
+      />
+      <button
+        type="submit"
+        className="py-4 text-sm tracking-wide text-black uppercase rounded-lg shadow-xl outline-none lg:text-base bg-primary-green hover:bg-opacity-75 focus:outline-none "
+      >
+        Login
+      </button>
+    </Form>
+  </Formik>
+
+  )
 }
-export default LoginPage;
+
+export default Login
