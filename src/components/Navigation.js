@@ -33,7 +33,7 @@ function Navbar() {
         {/* profile */}
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-20 h-20 bg-white rounded-full" />
-          <h2>Melody Cock</h2>
+          <h2>Melody Pendras</h2>
           <h1>Admin</h1>
         </div>
         {/* nav items */}
