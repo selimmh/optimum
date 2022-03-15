@@ -1,16 +1,17 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8000";
-axios.defaults.headers.common['Authorization'] = "AuthToken"
-
+// axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://465b-46-97-177-99.ngrok.io";
+axios.defaults.headers.common["Authorization"] = "AuthToken";
 
 //login
 export const loginUser = async (values) => {
   console.log(values);
-  return await axios.post('/login', {values})
-}
+  return await axios.post("/login", { values });
+};
 
 // users
-const usersUrl = `/users`;
+const usersUrl = `/allUsers`;
+// const usersUrl = `/users`;
 
 export const getallUsers = async (id) => {
   id = id || "";

@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { bool } from "yup";
 
 const initialValue = {
-  active: "",
+  active: true,
   firstname: "",
   lastname: "",
   email: "",
@@ -66,12 +66,13 @@ function Edit() {
           onChange={(e) => onValueChange(e)}
         >
           <option value={null}>Status</option>
-          <option value="true">Active</option>
-          <option value="false">Not Active</option>
+          <option value={true}>Active</option>
+          <option value={false}>Not Active</option>
         </select>
         {/* first name */}
         <input
           value={firstname}
+          // value="adriana"
           id="firstname"
           name="firstname"
           type="firstname"
