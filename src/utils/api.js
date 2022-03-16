@@ -75,6 +75,6 @@ export const deleteOffice = async (id) => {
 
 const assignUrl = `/assignToOffice`;
 
-export const assignToOffice = async (assignTo) => {
-  return await axios.post("https://localhost:8080/assignToOffice", assignTo);
+export const assignToOffice = async (user) => {
+  return await axios.post(officeUrl, user);
 };
