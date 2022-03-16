@@ -31,6 +31,8 @@ import AssignmentsEmployee from "./components/employee/Assignments";
 
 import SeeBuildingEmployee from "./components/employee/Buildings/SeeBuilding";
 
+import AddRemoteRequest from "./components/employee/RemoteReq/AddRemoteRequest";
+
 // oadmin
 import NavigationOAdmin from "./components/officeAdmin/Navigation";
 import HomeOAdmin from "./components/officeAdmin/Home";
@@ -45,6 +47,8 @@ import SeeBuildingOAdmin from "./components/officeAdmin/Buildings/SeeBuilding";
 import AssignOAdmin from "./components/officeAdmin/Users/Assign";
 import DeAssignOAdmin from "./components/officeAdmin/Users/DeAssign";
 
+import ErrorPage from "./pages/ErrorPage";
+
 function App() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -56,7 +60,12 @@ function App() {
 
   return (
     <div className="w-screen h-auto">
-      {/* login */}
+      <Router basename="/">
+        <Routes>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </Router>
+
       <Router>
         <Routes>
           <Route path="/" element={<Login />}></Route>

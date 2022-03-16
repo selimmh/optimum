@@ -7,7 +7,7 @@ import * as Yup from "yup";
 // import moment from "moment";
 
 // api functions
-import { addRemoteReq } from "../../utils/api";
+import { addRemoteReq } from "../../../utils/api";
 
 // main function
 function AddRemoteRequest(props) {
@@ -31,7 +31,7 @@ function AddRemoteRequest(props) {
         .required("*Required"),
       reason: Yup.string()
         .max(50, "Too long")
-        .min(10, "Too short")
+        .min(15, "Too short")
         .required("*Required"),
     }),
 
@@ -39,10 +39,11 @@ function AddRemoteRequest(props) {
     onSubmit: async (values) => {
       // add values
       addRemoteReq(values);
+      console.log(values)
       // reset form
       formik.resetForm();
       // refresh page
-      window.location.reload(false);
+      // window.location.reload(false);
     },
   });
 
@@ -51,14 +52,14 @@ function AddRemoteRequest(props) {
     // page container
     <>
       {/* title */}
-      <div className="text-2xl -mt-28 mb-10 text-center w-fit px-4">
+      <div className="flex flex-col justify-center align-center">
         Make new request
       </div>
 
       {/* form */}
       <form
         onSubmit={formik.handleSubmit}
-        className=" bg-gray-100 shadow-2xl rounded-lg p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4"
+        className=" flex flex-col justify-center align-center hegith h-screen my-0 mx-auto w-full max-w-xs"
       >
         {/* percentage input */}
         <div>

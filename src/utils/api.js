@@ -91,3 +91,16 @@ export const deAssignToOffice = async (userId, officeId) => {
     officeId: parseInt(officeId),
   });
 };
+
+
+
+//add remote request
+const remoteReq = `/remoteReq`;
+export const addRemoteReq = async (percentage, requestReason) => {
+  console.log(percentage, requestReason);
+return await axios.post(remoteReq, {
+  percentage: percentage,
+  requestReason: requestReason
+
+})
+}
