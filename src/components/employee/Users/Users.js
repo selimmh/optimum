@@ -179,16 +179,8 @@ function Users() {
                       <p>Percentage: {data.remotePercentage}</p>
                     </div>
                   </td>
-                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap">
-                    {data.gender}
-                  </td> */}
-                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap">
-                    {data.birthday !== "" ? data.birthday : <p>Not set</p>}
-                  </td> */}
-                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap">
-                    {data.nation !== "" ? data.nation : <p>Not set</p>}
-                  </td> */}
-                  <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
+
+                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
                     <AiOutlineSetting className="text-2xl" />
                     <div className=" right-[80%] -top-[50%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
                       <button
@@ -210,14 +202,9 @@ function Users() {
                       >
                         Edit
                       </button>
-                      {/* <button
-                        className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-red-400 hover:bg-red-500"
-                        onClick={() => deleteData(data.id)}
-                      >
-                        Delete
-                      </button> */}
+
                     </div>
-                  </td>
+                  </td> */}
                   {/* <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap ">
                     <button
                       className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"

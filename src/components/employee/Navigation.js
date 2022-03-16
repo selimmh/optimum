@@ -32,8 +32,7 @@ function Navbar() {
         {/* prfile */}
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-20 h-20 bg-white rounded-full" />
-          <h2>Melody Cock</h2>
-          <h1>User</h1>
+          <h1>Role: Employee</h1>
         </div>
         {/* nav items */}
         <div className="space-y-4 -mt-32">
