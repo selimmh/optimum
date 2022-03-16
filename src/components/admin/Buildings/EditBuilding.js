@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { editBuilding, getallBuildings } from "../../utils/api";
+import { editBuilding, getallBuildings } from "../../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
 
 const initialValue = {

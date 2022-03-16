@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { editUser, getallUsers } from "../../utils/api";
+import { editUser, getallUsers } from "../../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { bool } from "yup";
 
@@ -51,7 +51,8 @@ function Edit() {
 
   const editUserDetails = async () => {
     await editUser(id, user);
-    history.push("/all");
+    console.log(id);
+    // history.push("/all");
   };
   return (
     <div className="pl-40 w-full h-full flex items-center justify-center">

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineInfoCircle, AiOutlineSetting } from "react-icons/ai";
 
 // api functions
-import { deleteUser, getallUsers } from "../../utils/api";
+import { deleteUser, getallUsers } from "../../../utils/api";
 
 // AddUser form component
 import AddUser from "./AddUser";
@@ -70,32 +70,29 @@ function Users() {
   // all renders
   return (
     // page container
-    <div className="pl-60 w-full h-full flex flex-col items-end justify-start p-12">
+    <div className="pl-60 w-full h-full flex flex-col items-start justify-start p-12 space-y-5">
       {/* addUser button */}
       <button
         onClick={toggleForm}
-        className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
+        className="border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
       >
         {formOpen ? <span>Close</span> : <span>Add new user</span>}
       </button>
 
-      <button className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white ">
-        Filter
-      </button>
-
-      <input
-        placeholder="Search"
-        type="text"
-        name=""
-        id=""
-        className="border p-2"
-        onChange={(e) => setQuery(e.target.value)}
-      />
       {formOpen ? (
         <div className="py-10 w-full">
           <AddUser />
         </div>
       ) : null}
+
+      <input
+        placeholder="Search user"
+        type="text"
+        name=""
+        id=""
+        className="border-2 p-2 border-gray-800 rounded-md"
+        onChange={(e) => setQuery(e.target.value)}
+      />
       {/* table container */}
       <div className="w-full overflow-auto rounded-lg shadow-lg">
         {/* table  */}

@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import moment from "moment";
 
 // api functions
-import { addUser } from "../../utils/api";
+import { addUser } from "../../../utils/api";
 
 // main function
 function AddUser(props) {
@@ -76,7 +76,7 @@ function AddUser(props) {
     // page container
     <>
       {/* title */}
-      <div className="text-2xl -mt-28 mb-10 text-center w-fit px-4">
+      <div className="text-2xl -mt-20 mb-10 w-full text-center  px-4">
         Add new user
       </div>
 

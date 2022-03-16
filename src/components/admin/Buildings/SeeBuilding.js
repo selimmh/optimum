@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { getallBuildings } from "../../utils/api";
-import { getallOffices } from "../../utils/api";
-
+import { getallOffices, getallBuildings } from "../../../utils/api";
 function SeeBuilding() {
   const offices = Array.from(Array(10).keys());
   const [building, setBuilding] = useState("");

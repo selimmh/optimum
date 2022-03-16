@@ -11,11 +11,11 @@ import {
   getallBuildings,
   getallOffices,
   getallUsers,
-  deAssignToOffice,
-} from "../../utils/api";
+  assignToOffice,
+} from "../../../utils/api";
 
 // main function
-function DeAssign(props) {
+function Assign(props) {
   const [officeId, setOfficeId] = useState("");
   // navigate
   const history = useNavigate();
@@ -59,7 +59,7 @@ function DeAssign(props) {
     onSubmit: (values) => {
       console.log("submitted");
       // add values
-      deAssignToOffice(values);
+      assignToOffice(values);
       // reset form
       formik.resetForm();
       // refresh page
@@ -72,7 +72,7 @@ function DeAssign(props) {
     <div className="pl-60 w-full h-screen flex flex-col items-center justify-center p-20">
       {/* title */}
       <div className="text-2xl mb-10 text-center w-fit px-4">
-        De Assign desk to {user.firstname} {user.lastname}
+        Assign desk to {user.firstname} {user.lastname}
       </div>
 
       {/* form */}
@@ -128,7 +128,7 @@ function DeAssign(props) {
           <button
             onClick={() => {
               console.log("test");
-              deAssignToOffice(user.id, officeId);
+              assignToOffice(user.id, officeId);
             }}
             className="w-full h-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white"
           >
@@ -140,4 +140,4 @@ function DeAssign(props) {
   );
 }
 
-export default DeAssign;
+export default Assign;

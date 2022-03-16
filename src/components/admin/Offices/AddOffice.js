@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 // api functions
-import { addOffice, getallBuildings, getallUsers } from "../../utils/api";
+import { addOffice, getallBuildings, getallUsers } from "../../../utils/api";
 
 // main function
 function AddOffice(props) {
