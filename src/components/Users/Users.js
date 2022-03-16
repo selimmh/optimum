@@ -88,7 +88,7 @@ function Users() {
         type="text"
         name=""
         id=""
-        className="border p-2 focus:border-red-500"
+        className="border p-2"
         onChange={(e) => setQuery(e.target.value)}
       />
       {formOpen ? (
@@ -176,6 +176,10 @@ function Users() {
                           <span>Not set</span>
                         )}
                       </p>
+                      <p>Buillding: {data.buildingName}</p>
+                      <p>Office: {data.officeName}</p>
+                      <p>Remote Status: {data.remoteStatus}</p>
+                      <p>Percentage: {data.remotePercentage}</p>
                     </div>
                   </td>
                   {/* <td className="px-5 py-3 text-sm whitespace-nowrap">
@@ -189,7 +193,7 @@ function Users() {
                   </td> */}
                   <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
                     <AiOutlineSetting className="text-2xl" />
-                    <div className="-right-[50%] -top-[150%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
+                    <div className=" right-[80%] -top-[50%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
                       <button
                         onClick={() => history(`/assignDesk/${data.id}`)}
                         className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"
@@ -206,12 +210,12 @@ function Users() {
                       >
                         Edit
                       </button>
-                      <button
+                      {/* <button
                         className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-red-400 hover:bg-red-500"
                         onClick={() => deleteData(data.id)}
                       >
                         Delete
-                      </button>
+                      </button> */}
                     </div>
                   </td>
                   {/* <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap ">

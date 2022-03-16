@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { FiUsers } from "react-icons/fi";
+
 // api functions
 import { deleteOffice, getallOffices } from "../../utils/api";
 
@@ -15,8 +17,9 @@ const headers = [
   "Building",
   "Floor",
   "Occupancy",
-  "Size(w/h)",
+  // "Size(w/h)",
   "Office Admin",
+  "",
   "Actions",
 ];
 
@@ -83,31 +86,37 @@ function Offices() {
               <td className="px-5 py-3 text-sm whitespace-nowrap">{data.id}</td>
 
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.office}
+                {data.name}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.building}
+                {data.buildingName}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.floor}
+                {data.floorNo}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-pointer">
-                {Math.round(
-                  (parseInt(data.usableDesk) / parseInt(data.totalDesk)) * 100
-                )}
-                %{/* tooltip */}
+                {data.occupationPercentage}%{/* tooltip */}
                 <span className="absolute -right-1 top-0 border text-xs border-gray-800 transition-all duration-300 p-2 rounded-md scale-0 group-hover:scale-100">
                   <div className="flex flex-col">
-                    <p>Total: {data.totalDesk}</p>
-                    <p>Usable: {data.usableDesk}</p>
+                    <p>Total: {data.totalDesksCount}</p>
+                    <p>Usable: {data.usableDesksCount}</p>
                   </div>
                 </span>
               </td>
-              <td className="px-5 py-3 text-sm whitespace-nowrap">
+              {/* <td className="px-5 py-3 text-sm whitespace-nowrap">
                 {data.width}/{data.height}
-              </td>
+              </td> */}
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.oadmin}
+                {data.officeAdminName}
+              </td>
+              <td className="px-5 py-3 text-sm whitespace-nowrap relative group">
+                <FiUsers className="text-xl" />
+                <div className="flex flex-col absolute right-[80%] -top-[50%] z-10 w-fit h-fit border-2 px-4 pt-2 scale-0 text-white bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300 ">
+                  Users:
+                  {data.officeUsers.map((officeUser) => (
+                    <p>{officeUser}</p>
+                  ))}
+                </div>
               </td>
               <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap">
                 <button

@@ -85,7 +85,7 @@ function Assign(props) {
         onSubmit={formik.handleSubmit}
         className=" bg-gray-100 shadow-2xl rounded-lg p-4 grid grid-cols-1 gap-5"
       >
-        {/* building dropdown */}
+        {/* building dropdown
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
@@ -100,11 +100,11 @@ function Assign(props) {
               <option value={data.id}>{data.name}</option>
             ))}
           </select>
-          {/* building errors */}
+          building errors
           {formik.touched.building && formik.errors.building ? (
             <p className="text-red-500 text-xs">{formik.errors.building}</p>
           ) : null}
-        </div>
+        </div> */}
 
         {/* office dropdown */}
         <div className="w-52 h-10">
@@ -119,7 +119,7 @@ function Assign(props) {
             <option value="">Select Office</option>
             {office.map((data) => (
               <option value={data.id}>
-                {data.office} {data.building}
+                Office: {data.name} Building: {data.buildingName}
               </option>
             ))}
           </select>
@@ -129,7 +129,7 @@ function Assign(props) {
           ) : null}
         </div>
 
-        {/* desk dropdown */}
+        {/* desk dropdown
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
@@ -146,11 +146,11 @@ function Assign(props) {
               </option>
             ))}
           </select>
-          {/* office errors */}
+          office errors
           {formik.touched.desk && formik.errors.desk ? (
             <p className="text-red-500 text-xs">{formik.errors.desk}</p>
           ) : null}
-        </div>
+        </div> */}
 
         {/* actions */}
         <div className="w-52 h-10">
