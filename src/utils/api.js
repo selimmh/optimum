@@ -75,6 +75,19 @@ export const deleteOffice = async (id) => {
 
 const assignUrl = `/assignToOffice`;
 
-export const assignToOffice = async (user) => {
-  return await axios.post(officeUrl, user);
+export const assignToOffice = async (userId, officeId) => {
+  return await axios.post(assignUrl, {
+    userId: parseInt(userId),
+    officeId: parseInt(officeId),
+  });
+};
+// de assign office
+
+const deassignUrl = `/deassignFromOffice`;
+
+export const deAssignToOffice = async (userId, officeId) => {
+  return await axios.post(deassignUrl, {
+    userId: parseInt(userId),
+    officeId: parseInt(officeId),
+  });
 };

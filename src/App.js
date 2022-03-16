@@ -7,7 +7,7 @@ import Users from "./components/Users/Users";
 import Buildings from "./components/Buildings/Buildings";
 import Offices from "./components/Offices/Offices";
 import Assignments from "./components/Assignments";
-import Login from './pages/Login/Login'
+import Login from "./pages/Login/Login";
 import Logout from "./components/Logout";
 
 // components with id
@@ -15,6 +15,7 @@ import EditUser from "./components/Users/EditUser";
 import EditBuilding from "./components/Buildings/EditBuilding";
 import SeeBuilding from "./components/Buildings/SeeBuilding";
 import Assign from "./components/Users/Assign";
+import DeAssign from "./components/Users/DeAssign";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/editbuilding/:id" element={<EditBuilding />} exact />
           <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
           <Route path="/assignDesk/:id" element={<Assign />} exact />
+          <Route path="/DeAssignDesk/:id" element={<DeAssign />} exact />
         </Routes>
       </Router>
     </div>

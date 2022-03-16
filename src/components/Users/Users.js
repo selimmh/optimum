@@ -200,7 +200,10 @@ function Users() {
                       >
                         Assign
                       </button>
-                      <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300">
+                      <button
+                        onClick={() => history(`/deAssignDesk/${data.id}`)}
+                        className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"
+                      >
                         De-Assign
                       </button>
                       <br />
