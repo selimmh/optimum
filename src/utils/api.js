@@ -1,6 +1,6 @@
 import axios from "axios";
-// axios.defaults.baseURL = "http://localhost:8000";
-axios.defaults.baseURL = "http://465b-46-97-177-99.ngrok.io";
+axios.defaults.baseURL = "http://localhost:8080";
+//axios.defaults.baseURL = "http://465b-46-97-177-99.ngrok.io";
 axios.defaults.headers.common["Authorization"] = "AuthToken";
 
 //login
@@ -12,6 +12,7 @@ export const loginUser = async (values) => {
 // users
 const usersUrl = `/allUsers`;
 // const usersUrl = `/users`;
+const addUserUrl = `/user`;
 
 export const getallUsers = async (id) => {
   id = id || "";
@@ -19,7 +20,7 @@ export const getallUsers = async (id) => {
 };
 
 export const addUser = async (user) => {
-  return await axios.post(usersUrl, user);
+  return await axios.post(addUserUrl, user);
 };
 
 export const editUser = async (id, user) => {
@@ -31,18 +32,19 @@ export const deleteUser = async (id) => {
 };
 
 // buildings
-const buildingsUrl = `/buildings`;
+const buildingsUrl = `/allBuildings`;
+const addBuildingUrl = `/building`;
 
 export const getallBuildings = async (id) => {
   id = id || "";
   return await axios.get(`${buildingsUrl}/${id}`);
 };
 export const addBuilding = async (building) => {
-  return await axios.post(buildingsUrl, building);
+  return await axios.post(addBuildingUrl, building);
 };
 
 export const editBuilding = async (id, building) => {
-  return await axios.put(`${usersUrl}/${id}`, building);
+  return await axios.put(`${buildingsUrl}/${id}`, building);
 };
 
 export const deleteBuilding = async (id) => {
@@ -50,20 +52,21 @@ export const deleteBuilding = async (id) => {
 };
 
 // offices
-const officesUrl = `/offices`;
+const officesUrl = `/allOffices`;
+const officeUrl = `/office`;
 
 export const getallOffices = async (id) => {
   id = id || "";
   return await axios.get(`${officesUrl}/${id}`);
 };
 export const addOffice = async (office) => {
-  return await axios.post(officesUrl, office);
+  return await axios.post(officeUrl, office);
 };
 
 export const editOffice = async (id, office) => {
-  return await axios.put(`${usersUrl}/${id}`, office);
+  return await axios.put(`${officeUrl}/${id}`, office);
 };
 
 export const deleteOffice = async (id) => {
-  return await axios.delete(`${officesUrl}/${id}`);
+  return await axios.delete(`${officeUrl}/${id}`);
 };

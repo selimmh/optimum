@@ -18,7 +18,7 @@ function AddUser(props) {
   // initial values
   const formik = useFormik({
     initialValues: {
-      active: "true",
+      active: true,
       firstname: "",
       lastname: "",
       email: "",

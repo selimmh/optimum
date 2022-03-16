@@ -9,7 +9,7 @@ import { deleteBuilding, getallBuildings } from "../../utils/api";
 import AddBuilding from "./AddBuilding";
 
 // Header items
-const headers = ["#", "Name", "Floors", "Address", "Actions"];
+const headers = ["#", "Name", "Floors Number", "Address", "Actions"];
 
 // main function
 function Buildings() {
@@ -78,7 +78,7 @@ function Buildings() {
                 {data.name}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
-                {data.floors}
+                {data.floorsCount}
               </td>
               <td className="px-5 py-3 text-sm whitespace-nowrap">
                 {data.address}

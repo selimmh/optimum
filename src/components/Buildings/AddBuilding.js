@@ -18,14 +18,14 @@ function AddBuilding(props) {
   const formik = useFormik({
     initialValues: {
       name: "",
-      floors: "",
+      floorsCount: "",
       address: "",
     },
 
     // validation
     validationSchema: Yup.object({
       name: Yup.string().max(10, "Too long").required("*Required"),
-      floors: Yup.number()
+      floorsCount: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
@@ -80,19 +80,19 @@ function AddBuilding(props) {
         {/* floors input */}
         <div className="w-52 h-10">
           <input
-            id="floors"
-            name="floors"
+            id="floorsCount"
+            name="floorsCount"
             type="text"
             placeholder="Floors Count"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.floors}
+            value={formik.values.floorsCount}
           />
 
           {/* floors errors */}
-          {formik.touched.floors && formik.errors.floors ? (
-            <p className="text-red-500 text-xs">{formik.errors.floors}</p>
+          {formik.touched.floorsCount && formik.errors.floorsCount ? (
+            <p className="text-red-500 text-xs">{formik.errors.floorsCount}</p>
           ) : null}
         </div>
 

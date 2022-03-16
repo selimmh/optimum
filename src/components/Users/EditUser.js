@@ -14,7 +14,7 @@ const initialValue = {
   role: "",
   gender: "",
   birthday: "",
-  nation: "",
+  nationality: "",
 };
 
 function Edit() {
@@ -28,7 +28,7 @@ function Edit() {
     role,
     gender,
     birthday,
-    nation,
+    nationality,
   } = user;
 
   const { id } = useParams();
@@ -148,9 +148,9 @@ function Edit() {
         />
         {/* Nation */}
         <input
-          value={nation}
-          id="nation"
-          name="nation"
+          value={nationality}
+          id="nationality"
+          name="nationality"
           type="text"
           placeholder="Nationality"
           className="p-2 w-full"

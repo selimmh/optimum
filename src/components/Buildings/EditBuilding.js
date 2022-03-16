@@ -4,13 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const initialValue = {
   name: "",
-  floors: "",
+  floorsCount: "",
   address: "",
 };
 
 function EditBuilding() {
   const [building, setBuilding] = useState(initialValue);
-  const { name, floors, address } = building;
+  const { name, floorsCount, address } = building;
 
   const { id } = useParams();
 
@@ -43,18 +43,18 @@ function EditBuilding() {
           value={name}
           id="name"
           name="name"
-          type="name"
+          type="text"
           placeholder="Building Name"
           className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
         {/* floors */}
         <input
-          value={floors}
-          id="floors"
-          name="floors"
-          type="floors"
-          placeholder="Floors"
+          value={floorsCount}
+          id="floorsCount"
+          name="floorsCount"
+          type="text"
+          placeholder="Floors Count"
           className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />
