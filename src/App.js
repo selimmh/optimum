@@ -31,6 +31,8 @@ import SeeBuildingEmployee from "./components/employee/Buildings/SeeBuilding";
 import AssignEmployee from "./components/employee/Users/Assign";
 import DeAssignEmployee from "./components/employee/Users/DeAssign";
 
+import AddRemoteRequest from "./components/employee/RemoteReq/AddRemoteRequest";
+
 // oadmin
 import NavigationOAdmin from "./components/officeAdmin/Navigation";
 import HomeOAdmin from "./components/officeAdmin/Home";
@@ -45,10 +47,20 @@ import SeeBuildingOAdmin from "./components/officeAdmin/Buildings/SeeBuilding";
 import AssignOAdmin from "./components/officeAdmin/Users/Assign";
 import DeAssignOAdmin from "./components/officeAdmin/Users/DeAssign";
 
+import ErrorPage from "./pages/ErrorPage"
+
 function App() {
   return (
     <div className="w-screen h-auto">
+
+<Router basename="/">
+        <Routes>
+        <Route path="*" element={<ErrorPage/>}></Route>
+        </Routes>
+      </Router>
+
       {/* admin */}
+
       <Router basename="/admin">
         <Navigation />
         <Routes>
@@ -65,6 +77,8 @@ function App() {
           <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
           <Route path="/assignDesk/:id" element={<Assign />} exact />
           <Route path="/DeAssignDesk/:id" element={<DeAssign />} exact />
+          <Route path="*" element={<ErrorPage/>}></Route>
+
         </Routes>
       </Router>
 
@@ -78,7 +92,9 @@ function App() {
           <Route path="/buildings" element={<BuildingsEmployee />}></Route>
           <Route path="/offices" element={<OfficesEmployee />}></Route>
           <Route path="/assignments" element={<AssignmentsEmployee />}></Route>
+          <Route path="/addremotereq" element={<AddRemoteRequest />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
+          <Route path="*" element={<ErrorPage/>}></Route>
 
           <Route path="/edituser/:id" element={<EditUserEmployee />} exact />
           <Route
@@ -110,6 +126,7 @@ function App() {
           <Route path="/offices" element={<OfficesOAdmin />}></Route>
           <Route path="/assignments" element={<AssignmentsOAdmin />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
+          <Route path="*" element={<ErrorPage/>}></Route>
 
           <Route path="/edituser/:id" element={<EditUserOAdmin />} exact />
           <Route
@@ -124,6 +141,7 @@ function App() {
           />
           <Route path="/assignDesk/:id" element={<AssignOAdmin />} exact />
           <Route path="/DeAssignDesk/:id" element={<DeAssignOAdmin />} exact />
+
         </Routes>
       </Router>
     </div>
