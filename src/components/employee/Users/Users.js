@@ -8,24 +8,8 @@ import { AiOutlineInfoCircle, AiOutlineSetting } from "react-icons/ai";
 // api functions
 import { deleteUser, getallUsers } from "../../../utils/api";
 
-// AddUser form component
-import AddUser from "./AddUser";
-
 // headers
-const headers = [
-  "#",
-  "Active",
-  "Name",
-  // "Last",
-  "Email",
-  // "Password",
-  "Role",
-  // "Gender",
-  // "Birthday",
-  // "Nation",
-  "",
-  "",
-];
+const headers = ["#", "Active", "Name", "Email", "Role", ""];
 
 // main function
 function Users() {
@@ -44,47 +28,15 @@ function Users() {
     setUser(response.data);
   };
 
-  // delete function
-  const deleteData = async (id) => {
-    await deleteUser(id);
-    getUsers();
-  };
-
-  // form toggler
-  const [formOpen, setformOpen] = useState(false);
-  const toggleForm = () => {
-    !formOpen ? setformOpen(true) : setformOpen(false);
-  };
-
   // search filter
   const [query, setQuery] = useState("");
   console.log(query);
-
-  // more details
-
-  const [isOpen, setOpen] = useState(false);
-  const toggleMore = (id) => {
-    !isOpen ? setOpen(true) : setOpen(false);
-  };
 
   // all renders
   return (
     // page container
     <div className="pl-60 w-full h-full flex flex-col items-start justify-start p-12 space-y-5">
-      {/* addUser button */}
-      <button
-        onClick={toggleForm}
-        className="border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
-      >
-        {formOpen ? <span>Close</span> : <span>Add new user</span>}
-      </button>
-
-      {formOpen ? (
-        <div className="py-10 w-full">
-          <AddUser />
-        </div>
-      ) : null}
-
+      {/* search */}
       <input
         placeholder="Search user"
         type="text"
@@ -137,12 +89,6 @@ function Users() {
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
                     {data.firstname} {data.lastname}
                   </td>
-                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap group relative">
-                    {data.lastname}
-                    <div className="absolute -top-12 left-0 right-0 border-2 p-5 scale-0 group-hover:scale-100">
-                      info info info
-                    </div>
-                  </td> */}
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
                     {data.email}
                   </td>
@@ -179,55 +125,6 @@ function Users() {
                       <p>Percentage: {data.remotePercentage}</p>
                     </div>
                   </td>
-
-                  {/* <td className="px-5 py-3 text-sm whitespace-nowrap relative group cursor-context-menu">
-                    <AiOutlineSetting className="text-2xl" />
-                    <div className=" right-[80%] -top-[50%] align-center justify-center gap-2 w-48 flex flex-wrap absolute z-10 h-fit border-2 px-4 pt-2 scale-0 bg-gray-700 rounded-md group-hover:scale-100 transition-all duration-300">
-                      <button
-                        onClick={() => history(`/assignDesk/${data.id}`)}
-                        className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"
-                      >
-                        Assign
-                      </button>
-                      <button
-                        onClick={() => history(`/deAssignDesk/${data.id}`)}
-                        className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"
-                      >
-                        De-Assign
-                      </button>
-                      <br />
-                      <button
-                        className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all bg-gray-100 hover:bg-gray-300"
-                        onClick={() => history(`/edituser/${data.id}`)}
-                      >
-                        Edit
-                      </button>
-
-                    </div>
-                  </td> */}
-                  {/* <td className="space-x-2 px-5 py-3 text-sm whitespace-nowrap ">
-                    <button
-                      className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                      onClick={() => history(`/edituser/${data.id}`)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                      onClick={() => deleteData(data.id)}
-                    >
-                      Del
-                    </button>
-                    <button
-                      onClick={() => history(`/assignDesk/${data.id}`)}
-                      className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
-                    >
-                      Assign
-                    </button>
-                    <button className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all">
-                      De-Assign
-                    </button>
-                  </td> */}
                 </tbody>
               </>
             ))}

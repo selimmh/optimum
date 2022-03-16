@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Login from "./pages/Login/Login";
+// general
 import Logout from "./components/Logout";
+import Login from "./components/Login";
 
 // admin
 import Navigation from "./components/admin/Navigation";
@@ -25,11 +26,7 @@ import BuildingsEmployee from "./components/employee/Buildings/Buildings";
 import OfficesEmployee from "./components/employee/Offices/Offices";
 import AssignmentsEmployee from "./components/employee/Assignments";
 
-import EditUserEmployee from "./components/employee/Users/EditUser";
-import EditBuildingEmployee from "./components/employee/Buildings/EditBuilding";
 import SeeBuildingEmployee from "./components/employee/Buildings/SeeBuilding";
-import AssignEmployee from "./components/employee/Users/Assign";
-import DeAssignEmployee from "./components/employee/Users/DeAssign";
 
 // oadmin
 import NavigationOAdmin from "./components/officeAdmin/Navigation";
@@ -48,12 +45,19 @@ import DeAssignOAdmin from "./components/officeAdmin/Users/DeAssign";
 function App() {
   return (
     <div className="w-screen h-auto">
+      {/* login */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />}></Route>
+        </Routes>
+      </Router>
+
       {/* admin */}
       <Router basename="/admin">
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+
           <Route path="/users" element={<Users />}></Route>
           <Route path="/buildings" element={<Buildings />}></Route>
           <Route path="/offices" element={<Offices />}></Route>
@@ -73,28 +77,15 @@ function App() {
         <NavigationEmployee />
         <Routes>
           <Route path="/" element={<HomeEmployee />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+
           <Route path="/users" element={<UsersEmployee />}></Route>
           <Route path="/buildings" element={<BuildingsEmployee />}></Route>
           <Route path="/offices" element={<OfficesEmployee />}></Route>
           <Route path="/assignments" element={<AssignmentsEmployee />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
-
-          <Route path="/edituser/:id" element={<EditUserEmployee />} exact />
-          <Route
-            path="/editbuilding/:id"
-            element={<EditBuildingEmployee />}
-            exact
-          />
           <Route
             path="/seeBuilding/:id"
             element={<SeeBuildingEmployee />}
-            exact
-          />
-          <Route path="/assignDesk/:id" element={<AssignEmployee />} exact />
-          <Route
-            path="/DeAssignDesk/:id"
-            element={<DeAssignEmployee />}
             exact
           />
         </Routes>
@@ -104,7 +95,7 @@ function App() {
         <NavigationOAdmin />
         <Routes>
           <Route path="/" element={<HomeOAdmin />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+
           <Route path="/users" element={<UsersOAdmin />}></Route>
           <Route path="/buildings" element={<BuildingsOAdmin />}></Route>
           <Route path="/offices" element={<OfficesOAdmin />}></Route>
