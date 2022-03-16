@@ -70,3 +70,11 @@ export const editOffice = async (id, office) => {
 export const deleteOffice = async (id) => {
   return await axios.delete(`${officeUrl}/${id}`);
 };
+
+// assign office
+
+const assignUrl = `/assignToOffice`;
+
+export const assignToOffice = async (assignTo) => {
+  return await axios.post("https://localhost:8080/assignToOffice", assignTo);
+};

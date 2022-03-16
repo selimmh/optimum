@@ -97,7 +97,7 @@
       "id": 10
     }
   ],
-  "buildings": [
+  "allBuildings": [
     {
       "name": "Building 1",
       "floors": 12,
@@ -147,50 +147,15 @@
       "id": 8
     }
   ],
-  "offices": [
+  "allOffices": [
     {
-      "office": "Office 1",
-      "building": "Building 1",
-      "floor": 2,
-      "totalDesk": "33",
-      "usableDesk": "32",
-      "oadmin": "Melody",
-      "width": "34",
-      "height": "12",
-      "id": 1
-    },
+      "name": "office1"
+    }
+  ],
+  "assignToOffice": [
     {
-      "office": "Office 2",
-      "building": "Building 2",
-      "floor": 4,
-      "totalDesk": "45",
-      "usableDesk": "12",
-      "oadmin": "Agosh",
-      "width": "34",
-      "height": "12",
-      "id": 2
-    },
-    {
-      "office": "test",
-      "building": "waw",
-      "floor": "55",
-      "totalDesk": "21",
-      "usableDesk": "3",
-      "oadmin": "Deanne MacKeague",
-      "width": "34",
-      "height": "12",
-      "id": 3
-    },
-    {
-      "office": "test",
-      "building": "7",
-      "floor": "1",
-      "totalDesk": "34",
-      "usableDesk": "32",
-      "width": "45",
-      "height": "66",
-      "oadmin": "Not Assigned",
-      "id": 4
+      "userId": "id",
+      "officeId": "id"
     }
   ]
 }

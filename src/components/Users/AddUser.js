@@ -26,7 +26,7 @@ function AddUser(props) {
       role: "",
       gender: "",
       birthday: "",
-      nation: "",
+      nationality: "",
     },
 
     // validation
