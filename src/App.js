@@ -1,4 +1,7 @@
+//react imports
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { FadeLoader } from "react-spinners";
 
 // general
 import Logout from "./components/Logout";
@@ -43,6 +46,14 @@ import AssignOAdmin from "./components/officeAdmin/Users/Assign";
 import DeAssignOAdmin from "./components/officeAdmin/Users/DeAssign";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <div className="w-screen h-auto">
       {/* login */}
@@ -53,70 +64,96 @@ function App() {
       </Router>
 
       {/* admin */}
-      <Router basename="/admin">
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
+      {loading ? (
+        <div className="w-screen h-screen flex items-center justify-center">
+          <FadeLoader size={30} loading={loading} />
+        </div>
+      ) : (
+        <Router basename="/admin">
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
 
-          <Route path="/users" element={<Users />}></Route>
-          <Route path="/buildings" element={<Buildings />}></Route>
-          <Route path="/offices" element={<Offices />}></Route>
-          <Route path="/assignments" element={<Assignments />}></Route>
-          <Route path="/logout" element={<Logout />}></Route>
+            <Route path="/users" element={<Users />}></Route>
+            <Route path="/buildings" element={<Buildings />}></Route>
+            <Route path="/offices" element={<Offices />}></Route>
+            <Route path="/assignments" element={<Assignments />}></Route>
+            <Route path="/logout" element={<Logout />}></Route>
 
-          <Route path="/edituser/:id" element={<EditUser />} exact />
-          <Route path="/editbuilding/:id" element={<EditBuilding />} exact />
-          <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
-          <Route path="/assignDesk/:id" element={<Assign />} exact />
-          <Route path="/DeAssignDesk/:id" element={<DeAssign />} exact />
-        </Routes>
-      </Router>
+            <Route path="/edituser/:id" element={<EditUser />} exact />
+            <Route path="/editbuilding/:id" element={<EditBuilding />} exact />
+            <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
+            <Route path="/assignDesk/:id" element={<Assign />} exact />
+            <Route path="/DeAssignDesk/:id" element={<DeAssign />} exact />
+          </Routes>
+        </Router>
+      )}
 
       {/* employee */}
-      <Router basename="/employee">
-        <NavigationEmployee />
-        <Routes>
-          <Route path="/" element={<HomeEmployee />}></Route>
+      {loading ? (
+        <div className="w-screen h-screen flex items-center justify-center">
+          <FadeLoader size={30} loading={loading} />
+        </div>
+      ) : (
+        <Router basename="/employee">
+          <NavigationEmployee />
+          <Routes>
+            <Route path="/" element={<HomeEmployee />}></Route>
 
-          <Route path="/users" element={<UsersEmployee />}></Route>
-          <Route path="/buildings" element={<BuildingsEmployee />}></Route>
-          <Route path="/offices" element={<OfficesEmployee />}></Route>
-          <Route path="/assignments" element={<AssignmentsEmployee />}></Route>
-          <Route path="/logout" element={<Logout />}></Route>
-          <Route
-            path="/seeBuilding/:id"
-            element={<SeeBuildingEmployee />}
-            exact
-          />
-        </Routes>
-      </Router>
+            <Route path="/users" element={<UsersEmployee />}></Route>
+            <Route path="/buildings" element={<BuildingsEmployee />}></Route>
+            <Route path="/offices" element={<OfficesEmployee />}></Route>
+            <Route
+              path="/assignments"
+              element={<AssignmentsEmployee />}
+            ></Route>
+            <Route path="/logout" element={<Logout />}></Route>
+            <Route
+              path="/seeBuilding/:id"
+              element={<SeeBuildingEmployee />}
+              exact
+            />
+          </Routes>
+        </Router>
+      )}
+
       {/* office admin */}
-      <Router basename="/oadmin">
-        <NavigationOAdmin />
-        <Routes>
-          <Route path="/" element={<HomeOAdmin />}></Route>
+      {loading ? (
+        <div className="w-screen h-screen flex items-center justify-center">
+          <FadeLoader size={30} loading={loading} />
+        </div>
+      ) : (
+        <Router basename="/oadmin">
+          <NavigationOAdmin />
+          <Routes>
+            <Route path="/" element={<HomeOAdmin />}></Route>
 
-          <Route path="/users" element={<UsersOAdmin />}></Route>
-          <Route path="/buildings" element={<BuildingsOAdmin />}></Route>
-          <Route path="/offices" element={<OfficesOAdmin />}></Route>
-          <Route path="/assignments" element={<AssignmentsOAdmin />}></Route>
-          <Route path="/logout" element={<Logout />}></Route>
+            <Route path="/users" element={<UsersOAdmin />}></Route>
+            <Route path="/buildings" element={<BuildingsOAdmin />}></Route>
+            <Route path="/offices" element={<OfficesOAdmin />}></Route>
+            <Route path="/assignments" element={<AssignmentsOAdmin />}></Route>
+            <Route path="/logout" element={<Logout />}></Route>
 
-          <Route path="/edituser/:id" element={<EditUserOAdmin />} exact />
-          <Route
-            path="/editbuilding/:id"
-            element={<EditBuildingOAdmin />}
-            exact
-          />
-          <Route
-            path="/seeBuilding/:id"
-            element={<SeeBuildingOAdmin />}
-            exact
-          />
-          <Route path="/assignDesk/:id" element={<AssignOAdmin />} exact />
-          <Route path="/DeAssignDesk/:id" element={<DeAssignOAdmin />} exact />
-        </Routes>
-      </Router>
+            <Route path="/edituser/:id" element={<EditUserOAdmin />} exact />
+            <Route
+              path="/editbuilding/:id"
+              element={<EditBuildingOAdmin />}
+              exact
+            />
+            <Route
+              path="/seeBuilding/:id"
+              element={<SeeBuildingOAdmin />}
+              exact
+            />
+            <Route path="/assignDesk/:id" element={<AssignOAdmin />} exact />
+            <Route
+              path="/DeAssignDesk/:id"
+              element={<DeAssignOAdmin />}
+              exact
+            />
+          </Routes>
+        </Router>
+      )}
     </div>
   );
 }

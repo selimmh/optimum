@@ -1,6 +1,9 @@
 // react imports
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+// icons
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 // validation packages
 import { useFormik } from "formik";
@@ -33,10 +36,10 @@ function AddUser(props) {
     validationSchema: Yup.object({
       firstname: Yup.string().max(15, "Too long").required("*Required"),
       lastname: Yup.string().max(20, "Too long").required("*Required"),
-      email: Yup.string().email("Invalid email").notRequired("*Required"),
+      email: Yup.string().email("Invalid email").required("*Required"),
       password: Yup.string()
         .min(8, "At least 8 charachters")
-        .notRequired("*Required")
+        .required("*Required")
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
           "8 Characters, Uppercase, Lowercase, Number, Special Charachter"
@@ -70,6 +73,12 @@ function AddUser(props) {
       window.location.reload(false);
     },
   });
+
+  // show hide
+  const [showPasword, setShowPassword] = useState(false);
+  const togglePass = () => {
+    !showPasword ? setShowPassword(true) : setShowPassword(false);
+  };
 
   // all renders
   return (
@@ -141,13 +150,20 @@ function AddUser(props) {
           <input
             id="password"
             name="password"
-            type="password"
+            type={showPasword ? "password" : "text"}
             placeholder="Password"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
+          <button onClick={togglePass}>
+            {showPasword ? (
+              <BsEyeFill className="text-xl ml-2" />
+            ) : (
+              <BsEyeSlashFill className="text-xl ml-2" />
+            )}
+          </button>
           {/* password errors */}
           {formik.touched.password && formik.errors.password ? (
             <p className="text-red-500 text-xs">{formik.errors.password}</p>

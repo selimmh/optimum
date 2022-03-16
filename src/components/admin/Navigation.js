@@ -6,6 +6,7 @@ import { HiOfficeBuilding } from "react-icons/hi";
 import { GiOfficeChair } from "react-icons/gi";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { MdAssignmentInd } from "react-icons/md";
+import { FaUserTie } from "react-icons/fa";
 
 function NavItem(props) {
   let navigate = useNavigate();
@@ -31,9 +32,10 @@ function Navbar() {
       <div className="flex flex-col w-full h-full justify-between">
         {/* prfile */}
         <div className="space-y-2 flex flex-col items-center">
-          <div className="w-20 h-20 bg-white rounded-full" />
-          <h2>Melody Cock</h2>
-          <h1>Admin</h1>
+          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+            <FaUserTie className="text-gray-800 text-5xl" />
+          </div>
+          <h1>Role: Admin</h1>
         </div>
         {/* nav items */}
         <div className="space-y-4 -mt-32">
