@@ -72,7 +72,7 @@ function DeAssign(props) {
     <div className="pl-60 w-full h-screen flex flex-col items-center justify-center p-20">
       {/* title */}
       <div className="text-2xl mb-10 text-center w-fit px-4">
-        De Assign desk to {user.firstname} {user.lastname}
+        De-assign desk from {user.firstname} {user.lastname}
       </div>
 
       {/* form */}
@@ -132,7 +132,7 @@ function DeAssign(props) {
             }}
             className="w-full h-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white"
           >
-            Submit
+            De-assign
           </button>
         </div>
       </form>
