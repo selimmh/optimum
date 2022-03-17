@@ -1,6 +1,6 @@
 import axios from "axios";
 // axios.defaults.baseURL = "http://6b7f-109-98-171-136.ngrok.io";
-axios.defaults.baseURL = "http://192.168.1.103:8080";
+axios.defaults.baseURL = "http://192.168.0.126:8080";
 
 axios.defaults.headers.common["Authorization"] = "AuthToken";
 
