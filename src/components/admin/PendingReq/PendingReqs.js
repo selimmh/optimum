@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // api functions
-import { deleteRemoteReqAdmin, getallRemoteReqsAdmin } from "../../utils/api";
+import { getallPendingReqs } from "../../../utils/api";
 
 // headers
-const headers = ["#", "User", "Date", "%", "Reason", "Actions"];
+const headers = ["#", "Status", "User", "Date", "%", "Reason", "Actions"];
 
 // main function
-function RemoteReqAdmin() {
+function PendingReqs() {
   // navigate
   const history = useNavigate();
 
@@ -21,7 +21,7 @@ function RemoteReqAdmin() {
 
   // fetch function
   const getRemoteRequestsAdmin = async () => {
-    const response = await getallRemoteReqsAdmin();
+    const response = await getallPendingReqs();
     setRemoteRequestAdmin(response.data);
   };
 
@@ -47,10 +47,19 @@ function RemoteReqAdmin() {
             <>
               <tbody className="border-b hover:bg-gray-200 transition-all">
                 <td className="px-5 py-3 text-sm whitespace-nowrap">
-                  {data.id}
+                  {/* {data.id} */}
                 </td>
                 <td className="px-5 py-3 text-sm whitespace-nowrap">
-                  {data.user}
+                  {data.status === "Pending" ? (
+                    <span class="flex h-3 w-3 relative">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                    </span>
+                  ) : null}{" "}
+                </td>
+
+                <td className="px-5 py-3 text-sm whitespace-nowrap">
+                  {data.username}
                 </td>
                 <td className="px-5 py-3 text-sm whitespace-nowrap">
                   {data.month}/{data.year}
@@ -86,4 +95,4 @@ function RemoteReqAdmin() {
   );
 }
 
-export default RemoteReqAdmin;
+export default PendingReqs;

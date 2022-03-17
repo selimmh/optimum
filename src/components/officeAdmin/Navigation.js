@@ -39,11 +39,11 @@ function Navbar() {
         <div className="space-y-4 -mt-32">
           <NavItem icon={<MdSpaceDashboard />} navItem="Home" navigate="/" />
           <NavItem icon={<FaUsers />} navItem="Users" navigate="/users" />
-          <NavItem
+          {/* <NavItem
             icon={<HiOfficeBuilding />}
             navItem="Buildings"
             navigate="/buildings"
-          />
+          /> */}
           <NavItem
             icon={<GiOfficeChair />}
             navItem="Offices"

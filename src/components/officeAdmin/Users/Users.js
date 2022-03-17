@@ -72,12 +72,12 @@ function Users() {
     // page container
     <div className="pl-60 w-full h-full flex flex-col items-start justify-start p-12 space-y-5">
       {/* addUser button */}
-      <button
+      {/* <button
         onClick={toggleForm}
         className="border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
       >
         {formOpen ? <span>Close</span> : <span>Add new user</span>}
-      </button>
+      </button> */}
 
       {formOpen ? (
         <div className="py-10 w-full">

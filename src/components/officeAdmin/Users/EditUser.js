@@ -60,6 +60,7 @@ function Edit() {
       <form className="w-1/2 bg-gray-100 shadow-2xl rounded-lg p-4 flex flex-col items-center space-y-4">
         {/* active */}
         <select
+          required
           value={active}
           id="active"
           name="active"
@@ -72,6 +73,7 @@ function Edit() {
         </select>
         {/* first name */}
         <input
+          required
           value={firstname}
           // value="adriana"
           id="firstname"

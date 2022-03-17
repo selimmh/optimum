@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // validation packages
@@ -7,7 +7,7 @@ import * as Yup from "yup";
 // import moment from "moment";
 
 // api functions
-import { addRemoteReq } from "../../../utils/api";
+import { addRemoteReq, getallUsers } from "../../../utils/api";
 
 // main function
 function AddRemoteRequest(props) {
@@ -19,6 +19,7 @@ function AddRemoteRequest(props) {
     initialValues: {
       percentage: "",
       requestReason: "",
+      userId: null,
     },
 
     // validation
@@ -47,15 +48,58 @@ function AddRemoteRequest(props) {
     },
   });
 
+  // fetch employees for dropdown
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const getAllUsers = async () => {
+    const response = await getallUsers();
+    setEmployees(response.data);
+  };
+
   // all renders
   return (
     // page container
-    <div className=" flex flex-col justify-center align-center hegith h-screen my-0 mx-auto w-full max-w-xs pl-60">
-      {/* title */}
+    <>
+      <div className="text-2xl -mt-20 mb-10 w-full text-center  px-4">
+        Make new Remote Request
+      </div>
 
       {/* form */}
-      <form onSubmit={formik.handleSubmit}>
-        <h1 className="w-fit whitespace-nowrap">Make a new request</h1>
+      <form
+        onSubmit={formik.handleSubmit}
+        className=" bg-gray-100 shadow-2xl rounded-lg p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4"
+      >
+        {/* buildingId input */}
+        <div className="w-52 h-10">
+          <select
+            className="w-full h-full"
+            id="userId"
+            name="userId"
+            value={formik.values.userId}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <option value="">Select Employee</option>
+            {employees.map((data) =>
+              data.role === "Employee" && data.active == true ? (
+                <option value={data.id}>
+                  {data.firstname} {data.lastname}
+                </option>
+              ) : null
+            )}
+          </select>
+          {/* buildingId errors */}
+          {formik.touched.officeAdminId && formik.errors.officeAdminId ? (
+            <p className="text-red-500 text-xs">
+              {formik.errors.officeAdminId}
+            </p>
+          ) : null}
+        </div>
+
         {/* percentage input */}
         <div>
           <input
@@ -100,7 +144,7 @@ function AddRemoteRequest(props) {
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 

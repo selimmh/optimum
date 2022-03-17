@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // api functions
-import { deleteRemoteReq, getallRemoteReqs } from "../../utils/api";
+import { deleteRemoteReq, getallRemoteReqs } from "../../../utils/api";
 
 // AddUser form component
 import AddRemoteRequest from "./AddRemoteRequest";
@@ -90,7 +90,7 @@ function RemoteReq() {
                     data.status === "Approved"
                       ? "text-green-500"
                       : data.status === "Pending"
-                      ? "text-blue-500"
+                      ? "text-orange-500"
                       : "text-red-500"
                   }`}
                 >

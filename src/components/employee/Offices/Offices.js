@@ -126,7 +126,7 @@ function Offices() {
                   Edit
                 </button>
                 <button
-                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
+                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all cursor-not-allowed"
                   onClick={() => deleteData(data.id)}
                 >
                   Del

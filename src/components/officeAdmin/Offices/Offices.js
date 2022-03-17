@@ -57,12 +57,12 @@ function Offices() {
     // page container
     <div className="pl-52 w-full h-full flex flex-col items-end justify-start p-12">
       {/* addOffice button */}
-      <button
+      {/* <button
         onClick={toggleForm}
         className="mb-10 border-2  border-gray-800 py-2 px-4 rounded-md hover:bg-gray-800 hover:text-white "
       >
         {formOpen ? <span>Close</span> : <span>Add new office</span>}
-      </button>
+      </button> */}
       {formOpen ? (
         <div className="py-10 w-full">
           <AddOffice />
@@ -126,7 +126,7 @@ function Offices() {
                   Edit
                 </button>
                 <button
-                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all"
+                  className="border-gray-800 text-xs border px-2 py-1 rounded-sm shadow-md hover:scale-105 transition-all cursor-not-allowed"
                   onClick={() => deleteData(data.id)}
                 >
                   Del

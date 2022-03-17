@@ -14,12 +14,14 @@ import Users from "./components/admin/Users/Users";
 import Buildings from "./components/admin/Buildings/Buildings";
 import Offices from "./components/admin/Offices/Offices";
 import Assignments from "./components/admin/Assignments";
+import PendingReqs from "./components/admin/PendingReq/PendingReqs";
 
 import EditUser from "./components/admin/Users/EditUser";
 import EditBuilding from "./components/admin/Buildings/EditBuilding";
 import SeeBuilding from "./components/admin/Buildings/SeeBuilding";
 import Assign from "./components/admin/Users/Assign";
 import DeAssign from "./components/admin/Users/DeAssign";
+import RejectReason from "./components/admin/PendingReq/RejectReason";
 
 // employee
 import NavigationEmployee from "./components/employee/Navigation";
@@ -31,7 +33,7 @@ import AssignmentsEmployee from "./components/employee/Assignments";
 
 import SeeBuildingEmployee from "./components/employee/Buildings/SeeBuilding";
 
-import AddRemoteRequest from "./components/employee/RemoteReq/AddRemoteRequest";
+import AddRemoteRequest from "./components/employee/RemoteReq/RemoteReq";
 
 // oadmin
 import NavigationOAdmin from "./components/officeAdmin/Navigation";
@@ -87,6 +89,7 @@ function App() {
             <Route path="/buildings" element={<Buildings />}></Route>
             <Route path="/offices" element={<Offices />}></Route>
             <Route path="/assignments" element={<Assignments />}></Route>
+            <Route path="/pendingReqs" element={<PendingReqs />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
 
@@ -95,6 +98,7 @@ function App() {
             <Route path="/seeBuilding/:id" element={<SeeBuilding />} exact />
             <Route path="/assignDesk/:id" element={<Assign />} exact />
             <Route path="/DeAssignDesk/:id" element={<DeAssign />} exact />
+            <Route path="/rejectReason/:id" element={<RejectReason />} exact />
           </Routes>
         </Router>
       )}

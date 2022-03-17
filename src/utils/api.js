@@ -1,7 +1,8 @@
+// import axips
 import axios from "axios";
-// axios.defaults.baseURL = "http://6b7f-109-98-171-136.ngrok.io";
 
-axios.defaults.baseURL = "http://localhost:8080";
+// base url
+axios.defaults.baseURL = "http://192.168.1.100:8080";
 
 //login
 export const loginUser = async (values) => {
@@ -11,7 +12,6 @@ export const loginUser = async (values) => {
 
 // users
 const usersUrl = `/allUsers`;
-// const usersUrl = `/users`;
 const addUserUrl = `/user`;
 
 export const getallUsers = async (id) => {
@@ -19,9 +19,7 @@ export const getallUsers = async (id) => {
   return await axios.get(`${usersUrl}/${id}`);
 };
 
-
 export const addUser = async (user) => {
-  // return await axios.post(addUserUrl, user);
   return await axios.post(addUserUrl, user);
 };
 
@@ -74,9 +72,10 @@ export const deleteOffice = async (id) => {
   return await axios.delete(`${officesUrl}/${id}`);
 };
 
-// assign office
+// assign, de-assing office
 
 const assignUrl = `/assignToOffice`;
+const deassignUrl = `/deassignFromOffice`;
 
 export const assignToOffice = async (userId, officeId) => {
   return await axios.post(assignUrl, {
@@ -84,9 +83,6 @@ export const assignToOffice = async (userId, officeId) => {
     officeId: parseInt(officeId),
   });
 };
-// de assign office
-
-const deassignUrl = `/deassignFromOffice`;
 
 export const deAssignToOffice = async (userId, officeId) => {
   return await axios.post(deassignUrl, {
@@ -95,22 +91,43 @@ export const deAssignToOffice = async (userId, officeId) => {
   });
 };
 
-//add remote request
+// remote requests
+
 const remoteReq = `/remoteReq`;
+const getRemoteReq = `/allRemoteReq`;
 
 export const addRemoteReq = async (request) => {
   console.log(request);
   return await axios.post(remoteReq, request);
 };
 
+export const getallRemoteReqs = async (id) => {
+  id = id || "";
+  return await axios.get(`${allOfficeAdmins}/${id}`);
+};
+
+export const getallRemoteReqsAdmin = async (id) => {
+  id = id || "";
+  return await axios.get(`${allOfficeAdmins}/${id}`);
+};
+
 export const rejectReason = async (id, request) => {
   return await axios.put(`${remoteReq}/${id}`, request);
 };
 
+// pending
+
+const getPendingReq = `/pendingRemoteReq`;
+
+export const getallPendingReqs = async (id) => {
+  id = id || "";
+  return await axios.get(`${getPendingReq}/${id}`);
+};
+
+// office admin
 const allOfficeAdmins = `/allOfficeAdmins`;
 
 export const getAllOfficeAdmins = async (id) => {
   id = id || "";
   return await axios.get(`${allOfficeAdmins}/${id}`);
 };
-

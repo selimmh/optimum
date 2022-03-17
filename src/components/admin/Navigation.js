@@ -7,6 +7,7 @@ import { GiOfficeChair } from "react-icons/gi";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { MdAssignmentInd } from "react-icons/md";
 import { FaUserTie } from "react-icons/fa";
+import { BiMessageAltError } from "react-icons/bi";
 
 function NavItem(props) {
   let navigate = useNavigate();
@@ -52,10 +53,15 @@ function Navbar() {
             navigate="/offices"
           />
           <NavItem
+            icon={<BiMessageAltError />}
+            navItem="Pending"
+            navigate="/pendingReqs"
+          />
+          {/* <NavItem
             icon={<MdAssignmentInd />}
             navItem="Assignments"
             navigate="/assignments"
-          />
+          /> */}
         </div>
         <div>
           <NavItem
