@@ -113,7 +113,7 @@ function Assign(props) {
             <option value="">Select Office</option>
             {office.map((data) => (
               <option value={data.id}>
-                Id: {data.id} Office: {data.name} Building: {data.buildingName}
+                Office: {data.name} Building: {data.buildingName}
               </option>
             ))}
           </select>
@@ -132,7 +132,7 @@ function Assign(props) {
             }}
             className="w-full h-full border-2 border-gray-800 hover:bg-gray-800 hover:text-white"
           >
-            Submit
+            Assign
           </button>
         </div>
       </form>
