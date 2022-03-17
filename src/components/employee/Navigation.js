@@ -53,6 +53,11 @@ function Navbar() {
             navItem="Assignments"
             navigate="/assignments"
           />
+                    <NavItem
+            icon={<MdAssignmentInd />}
+            navItem="Req. remote work"
+            navigate="/addremotereq"
+          />
         </div>
         <div>
           <NavItem

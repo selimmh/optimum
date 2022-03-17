@@ -24,7 +24,7 @@ export const addUser = async (user) => {
 };
 
 export const editUser = async (id, user) => {
-  console.log(id, user)
+  console.log(id, user);
   return await axios.put(`${usersUrl}/${id}`, user);
 };
 
@@ -93,15 +93,14 @@ export const deAssignToOffice = async (userId, officeId) => {
   });
 };
 
-
-
 //add remote request
 const remoteReq = `/remoteReq`;
-export const addRemoteReq = async (percentage, requestReason) => {
-  console.log(percentage, requestReason);
-return await axios.post(remoteReq, {
-  percentage: percentage,
-  requestReason: requestReason
 
-})
-}
+export const addRemoteReq = async (request) => {
+  console.log(request);
+  return await axios.post(remoteReq,request);
+};
+
+export const rejectReason = async (id, request) => {
+  return await axios.put(`${remoteReq}/${id}`, request);
+};

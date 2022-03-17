@@ -67,7 +67,7 @@ function App() {
       </Router> */}
 
       <Router>
-        <Routes>
+        <Routes basename="/login">
           <Route path="/" element={<Login />}></Route>
         </Routes>
       </Router>
@@ -88,6 +88,7 @@ function App() {
             <Route path="/offices" element={<Offices />}></Route>
             <Route path="/assignments" element={<Assignments />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
+            <Route path="*" element={<ErrorPage />}></Route>
 
             <Route path="/edituser/:id" element={<EditUser />} exact />
             <Route path="/editbuilding/:id" element={<EditBuilding />} exact />
@@ -116,7 +117,9 @@ function App() {
               path="/assignments"
               element={<AssignmentsEmployee />}
             ></Route>
+            <Route path="/addremotereq" element={<AddRemoteRequest />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
+            <Route path="*" element={<ErrorPage />}></Route>
             <Route
               path="/seeBuilding/:id"
               element={<SeeBuildingEmployee />}
@@ -142,6 +145,7 @@ function App() {
             <Route path="/offices" element={<OfficesOAdmin />}></Route>
             <Route path="/assignments" element={<AssignmentsOAdmin />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
+            <Route path="*" element={<ErrorPage />}></Route>
 
             <Route path="/edituser/:id" element={<EditUserOAdmin />} exact />
             <Route
