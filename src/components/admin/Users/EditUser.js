@@ -73,10 +73,9 @@ function Edit() {
         {/* first name */}
         <input
           value={firstname}
-          // value="adriana"
           id="firstname"
           name="firstname"
-          type="firstname"
+          type="text"
           placeholder="First Name"
           className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
@@ -84,10 +83,10 @@ function Edit() {
         {/* last name */}
         <input
           value={lastname}
-          id="username"
-          name="username"
+          id="lastname"
+          name="lastname"
           type="text"
-          placeholder="Username"
+          placeholder="Lastname"
           className="p-2 w-full"
           onChange={(e) => onValueChange(e)}
         />

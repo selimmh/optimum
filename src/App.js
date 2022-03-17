@@ -60,11 +60,11 @@ function App() {
 
   return (
     <div className="w-screen h-auto">
-      <Router basename="/">
+      {/* <Router basename="/">
         <Routes>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
-      </Router>
+      </Router> */}
 
       <Router>
         <Routes>
