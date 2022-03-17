@@ -39,33 +39,33 @@ function AddOffice(props) {
   // initial values
   const formik = useFormik({
     initialValues: {
-      office: "",
-      building: "",
-      floor: "",
-      totalDesk: "",
-      usableDesk: "",
+      name: "",
+      buildingId: "",
+      floorNo: "",
+      totalDeskCount: "",
+      usableDeskCount: "",
       width: "",
-      height: "",
-      oadmin: "Not Assigned",
+      length: "",
+      officeAdminId: "",
     },
 
     // validation
     validationSchema: Yup.object({
-      office: Yup.string().max(10, "Too long").required("*Required"),
-      building: Yup.string().required("*Required"),
-      floor: Yup.number()
+      name: Yup.string().max(10, "Too long").required("*Required"),
+      buildingId: Yup.string().required("*Required"),
+      floorNo: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
         .max(100, "Max 100 floors")
         .required("*Required"),
-      totalDesk: Yup.number()
+      totalDeskCount: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
         .max(100, "Max 100 desks")
         .required("*Required"),
-      usableDesk: Yup.number()
+      usableDeskCount: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
@@ -77,13 +77,13 @@ function AddOffice(props) {
         .integer("Integer number only")
         .max(100, "Max 100 meters")
         .required("*Required"),
-      height: Yup.number()
+      lenght: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
         .max(100, "Max 100 meters")
         .required("*Required"),
-      oadmin: Yup.string().notRequired(),
+      officeAdminId: Yup.string().notRequired(),
     }),
 
     // submit
@@ -113,14 +113,14 @@ function AddOffice(props) {
         {/* office input */}
         <div className="w-52 h-10">
           <input
-            id="office"
-            name="office"
+            id="name"
+            name="name"
             type="text"
             placeholder="Office Name"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.office}
+            value={formik.values.name}
           />
           {/* office errors */}
           {formik.touched.office && formik.errors.office ? (
@@ -132,8 +132,8 @@ function AddOffice(props) {
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
-            id="building"
-            name="building"
+            id="buildingId"
+            name="buildingId"
             value={formik.values.building}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -152,8 +152,8 @@ function AddOffice(props) {
         {/* floor input */}
         <div className="w-52 h-10">
           <input
-            id="floor"
-            name="floor"
+            id="floorNo"
+            name="floorNo"
             type="text"
             placeholder="Floor"
             className="p-2"
@@ -163,7 +163,7 @@ function AddOffice(props) {
           />
           {/* floor errors */}
           {formik.touched.floor && formik.errors.floor ? (
-            <p className="text-red-500 text-xs">{formik.errors.floor}</p>
+            <p className="text-red-500 text-xs">{formik.errors.floorNo}</p>
           ) : null}
         </div>
 
@@ -188,14 +188,14 @@ function AddOffice(props) {
         {/* height input */}
         <div className="w-52 h-10">
           <input
-            id="height"
-            name="height"
+            id="lenght"
+            name="lenght"
             type="text"
-            placeholder="Height (in meters)"
+            placeholder="Lenght (in meters)"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.height}
+            value={formik.values.lenght}
           />
           {/* height errors */}
           {formik.touched.height && formik.errors.height ? (
@@ -206,14 +206,14 @@ function AddOffice(props) {
         {/* totalDesk input */}
         <div className="w-52 h-10">
           <input
-            id="totalDesk"
-            name="totalDesk"
+            id="totalDesksCount"
+            name="totalDesksCount"
             type="text"
             placeholder="Total Desk"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.totalDesk}
+            value={formik.values.totalDesksCount}
           />
           {/* totalDesk errors */}
           {formik.touched.totalDesk && formik.errors.totalDesk ? (
@@ -224,17 +224,17 @@ function AddOffice(props) {
         {/* usableDesk input */}
         <div className="w-52 h-10">
           <input
-            id="usableDesk"
-            name="usableDesk"
+            id="usableDesksCount"
+            name="usableDesksCount"
             type="text"
             placeholder="Usable Desk"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.usableDesk}
+            value={formik.values.usableDesksCount}
           />
           {/* usableDesk errors */}
-          {formik.touched.usableDesk && formik.errors.usableDesk ? (
+          {formik.touched.usableDesksCount && formik.errors.usableDesk ? (
             <p className="text-red-500 text-xs">{formik.errors.usableDesk}</p>
           ) : null}
         </div>
@@ -243,9 +243,9 @@ function AddOffice(props) {
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
-            id="oadmin"
-            name="oadmin"
-            value={formik.values.oadmin}
+            id="officeAdminId"
+            name="officeAdminId"
+            value={formik.values.officeAdminId}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
@@ -259,8 +259,8 @@ function AddOffice(props) {
             )}
           </select>
           {/* oadmin errors */}
-          {formik.touched.oadmin && formik.errors.oadmin ? (
-            <p className="text-red-500 text-xs">{formik.errors.oadmin}</p>
+          {formik.touched.officeAdminId && formik.errors.oadmin ? (
+            <p className="text-red-500 text-xs">{formik.errors.officeAdminId}</p>
           ) : null}
         </div>
 

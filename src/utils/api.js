@@ -1,8 +1,7 @@
 import axios from "axios";
 // axios.defaults.baseURL = "http://6b7f-109-98-171-136.ngrok.io";
-axios.defaults.baseURL = "http://192.168.0.126:8080";
 
-axios.defaults.headers.common["Authorization"] = "AuthToken";
+axios.defaults.baseURL = "http://192.168.0.126:8080";
 
 //login
 export const loginUser = async (values) => {
@@ -97,10 +96,12 @@ export const deAssignToOffice = async (userId, officeId) => {
 
 //add remote request
 const remoteReq = `/remoteReq`;
-export const addRemoteReq = async (percentage, requestReason) => {
-  console.log(percentage, requestReason);
-  return await axios.post(remoteReq, {
-    percentage: percentage,
-    requestReason: requestReason,
-  });
+
+export const addRemoteReq = async (request) => {
+  console.log(request);
+  return await axios.post(remoteReq, request);
+};
+
+export const rejectReason = async (id, request) => {
+  return await axios.put(`${remoteReq}/${id}`, request);
 };
