@@ -1,7 +1,7 @@
 import axios from "axios";
 // axios.defaults.baseURL = "http://6b7f-109-98-171-136.ngrok.io";
 
-axios.defaults.baseURL = "http://192.168.0.126:8080";
+axios.defaults.baseURL = "http://localhost:8080";
 
 //login
 export const loginUser = async (values) => {
@@ -18,6 +18,7 @@ export const getallUsers = async (id) => {
   id = id || "";
   return await axios.get(`${usersUrl}/${id}`);
 };
+
 
 export const addUser = async (user) => {
   // return await axios.post(addUserUrl, user);
@@ -55,22 +56,22 @@ export const deleteBuilding = async (id) => {
 
 // offices
 const officesUrl = `/allOffices`;
-const officeUrl = `/office`;
+const addOfficeUrl = `/office`;
 
 export const getallOffices = async (id) => {
   id = id || "";
   return await axios.get(`${officesUrl}/${id}`);
 };
 export const addOffice = async (office) => {
-  return await axios.post(officeUrl, office);
+  return await axios.post(addOfficeUrl, office);
 };
 
 export const editOffice = async (id, office) => {
-  return await axios.put(`${officeUrl}/${id}`, office);
+  return await axios.put(`${officesUrl}/${id}`, office);
 };
 
 export const deleteOffice = async (id) => {
-  return await axios.delete(`${officeUrl}/${id}`);
+  return await axios.delete(`${officesUrl}/${id}`);
 };
 
 // assign office
@@ -105,3 +106,11 @@ export const addRemoteReq = async (request) => {
 export const rejectReason = async (id, request) => {
   return await axios.put(`${remoteReq}/${id}`, request);
 };
+
+const allOfficeAdmins = `/allOfficeAdmins`;
+
+export const getAllOfficeAdmins = async (id) => {
+  id = id || "";
+  return await axios.get(`${allOfficeAdmins}/${id}`);
+};
+

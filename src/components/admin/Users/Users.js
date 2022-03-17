@@ -118,7 +118,7 @@ function Users() {
               <>
                 <tbody className="border-b hover:bg-gray-200 transition-all">
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
-                    {data.id}
+                    {""}
                   </td>
                   <td className="px-5 py-3 text-sm whitespace-nowrap">
                     {/* {data.active} */}

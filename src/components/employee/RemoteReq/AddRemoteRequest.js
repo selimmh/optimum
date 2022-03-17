@@ -50,17 +50,12 @@ function AddRemoteRequest(props) {
   // all renders
   return (
     // page container
-    <>
+    <div className=" flex flex-col justify-center align-center hegith h-screen my-0 mx-auto w-full max-w-xs pl-60">
       {/* title */}
-      <div className="flex flex-col justify-center align-center">
-        Make new request
-      </div>
 
       {/* form */}
-      <form
-        onSubmit={formik.handleSubmit}
-        className=" flex flex-col justify-center align-center hegith h-screen my-0 mx-auto w-full max-w-xs"
-      >
+      <form onSubmit={formik.handleSubmit}>
+        <h1 className="w-fit whitespace-nowrap">Make a new request</h1>
         {/* percentage input */}
         <div>
           <input
@@ -93,7 +88,9 @@ function AddRemoteRequest(props) {
           />
           {/* reason errors */}
           {formik.touched.requestReason && formik.errors.requestReason ? (
-            <p className="text-red-500 text-xs">{formik.errors.requestReason}</p>
+            <p className="text-red-500 text-xs">
+              {formik.errors.requestReason}
+            </p>
           ) : null}
         </div>
         {/* actions */}
@@ -103,7 +100,7 @@ function AddRemoteRequest(props) {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

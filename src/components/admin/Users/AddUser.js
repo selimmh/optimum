@@ -55,7 +55,7 @@ function AddUser(props) {
       //   "No younger than 18",
       //   (date) => moment().diff(moment(date), "years") >= 18
       // ),
-      nation: Yup.string()
+      nationality: Yup.string()
         .min(3, "Too short")
         .max(10, "Too long")
         .default("Not set")
@@ -70,7 +70,7 @@ function AddUser(props) {
       // reset form
       formik.resetForm();
       // refresh page
-      window.location.reload(false);
+      // window.location.reload(false);
     },
   });
 
@@ -227,21 +227,21 @@ function AddUser(props) {
             <p className="text-red-500 text-xs">{formik.errors.birthday}</p>
           ) : null}
         </div>
-        {/* nation input */}
+        {/* nationality input */}
         <div>
           <input
-            id="nation"
-            name="nation"
+            id="nationality"
+            name="nationality"
             type="text"
             placeholder="Nationality"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.nation}
+            value={formik.values.nationality}
           />
-          {/* nation errrors */}
-          {formik.touched.nation && formik.errors.nation ? (
-            <p className="text-red-500 text-xs">{formik.errors.nation}</p>
+          {/* nationality errrors */}
+          {formik.touched.nation && formik.errors.nationality ? (
+            <p className="text-red-500 text-xs">{formik.errors.nationality}</p>
           ) : null}
         </div>
         {/* actions */}

@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 // api functions
-import { addOffice, getallBuildings, getallUsers } from "../../../utils/api";
+import { addOffice, getallBuildings, getAllOfficeAdmins } from "../../../utils/api";
 
 // main function
 function AddOffice(props) {
@@ -15,57 +15,64 @@ function AddOffice(props) {
   const history = useNavigate();
 
   // fetch buildings for dropdown
-  const [building, setBuilding] = useState([]);
+  const [buildingId, setBuildingId] = useState([]);
+
   useEffect(() => {
     getBuildings();
   }, []);
 
   const getBuildings = async () => {
     const response = await getallBuildings();
-    setBuilding(response.data);
+    setBuildingId(response.data);
+
   };
 
-  // fetch users for dropdown
-  const [user, setUser] = useState([]);
+  // fetch officeAdmins for dropdown
+  const [officeAdminId, setOfficeAdminId] = useState([]);
+
+
   useEffect(() => {
-    getUsers();
+    getOfficeAdmins();
   }, []);
 
-  const getUsers = async () => {
-    const response = await getallUsers();
-    setUser(response.data);
+  const getOfficeAdmins = async () => {
+    const response = await getAllOfficeAdmins();
+    setOfficeAdminId(response.data);
   };
+
+
+
 
   // initial values
   const formik = useFormik({
     initialValues: {
-      office: "",
-      building: "",
-      floor: "",
-      totalDesk: "",
-      usableDesk: "",
+      name: "",
+      floorNo: "",
+      totalDesksCount: "",
+      usableDesksCount: "",
       width: "",
-      height: "",
-      oadmin: "Not Assigned",
+      length: "",
+      buildingId: "",
+      officeAdminId: "Not Assigned",
     },
 
     // validation
     validationSchema: Yup.object({
-      office: Yup.string().max(10, "Too long").required("*Required"),
-      building: Yup.string().required("*Required"),
-      floor: Yup.number()
+      name: Yup.string().max(10, "Too long").required("*Required"),
+      buildingId: Yup.string().required("*Required"),
+      floorNo: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
         .max(100, "Max 100 floors")
         .required("*Required"),
-      totalDesk: Yup.number()
+      totalDesksCount: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
         .max(100, "Max 100 desks")
         .required("*Required"),
-      usableDesk: Yup.number()
+      usableDesksCount: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
@@ -77,7 +84,7 @@ function AddOffice(props) {
         .integer("Integer number only")
         .max(100, "Max 100 meters")
         .required("*Required"),
-      height: Yup.number()
+      length: Yup.number()
         .typeError("Number only")
         .positive("Positive number only")
         .integer("Integer number only")
@@ -110,42 +117,42 @@ function AddOffice(props) {
         onSubmit={formik.handleSubmit}
         className=" bg-gray-100 shadow-2xl rounded-lg p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:grid-cols-4"
       >
-        {/* office input */}
+        {/* Office name input */}
         <div className="w-52 h-10">
           <input
-            id="office"
-            name="office"
+            id="name"
+            name="name"
             type="text"
             placeholder="Office Name"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.office}
+            value={formik.values.name}
           />
-          {/* office errors */}
-          {formik.touched.office && formik.errors.office ? (
-            <p className="text-red-500 text-xs">{formik.errors.office}</p>
+          {/* office name errors */}
+          {formik.touched.name && formik.errors.name ? (
+            <p className="text-red-500 text-xs">{formik.errors.name}</p>
           ) : null}
         </div>
 
-        {/* building input */}
+        {/* buildingId input */}
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
-            id="building"
-            name="building"
-            value={formik.values.building}
+            id="buildingId"
+            name="buildingId"
+            value={formik.values.buildingId}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
-            <option value="">Select Building</option>
-            {building.map((data) => (
+            <option value="">Select buildingId</option>
+            {buildingId.map((data) => (
               <option value={data.id}>{data.name}</option>
             ))}
           </select>
-          {/* building errors */}
-          {formik.touched.building && formik.errors.building ? (
-            <p className="text-red-500 text-xs">{formik.errors.building}</p>
+          {/* buildingId errors */}
+          {formik.touched.buildingId && formik.errors.buildingId ? (
+            <p className="text-red-500 text-xs">{formik.errors.buildingId}</p>
           ) : null}
         </div>
 
@@ -185,82 +192,78 @@ function AddOffice(props) {
           ) : null}
         </div>
 
-        {/* height input */}
+        {/* length input */}
         <div className="w-52 h-10">
           <input
-            id="height"
-            name="height"
+            id="length"
+            name="length"
             type="text"
-            placeholder="Height (in meters)"
+            placeholder="length (in meters)"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.height}
+            value={formik.values.length}
           />
-          {/* height errors */}
-          {formik.touched.height && formik.errors.height ? (
-            <p className="text-red-500 text-xs">{formik.errors.height}</p>
+          {/* length errors */}
+          {formik.touched.length && formik.errors.length ? (
+            <p className="text-red-500 text-xs">{formik.errors.length}</p>
           ) : null}
         </div>
 
-        {/* totalDesk input */}
+        {/* totalDesksCount input */}
         <div className="w-52 h-10">
           <input
-            id="totalDesk"
-            name="totalDesk"
+            id="totalDesksCount"
+            name="totalDesksCount"
             type="text"
             placeholder="Total Desk"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.totalDesk}
+            value={formik.values.totalDesksCount}
           />
-          {/* totalDesk errors */}
-          {formik.touched.totalDesk && formik.errors.totalDesk ? (
-            <p className="text-red-500 text-xs">{formik.errors.totalDesk}</p>
+          {/* totalDesksCount errors */}
+          {formik.touched.totalDesksCount && formik.errors.totalDesksCount ? (
+            <p className="text-red-500 text-xs">{formik.errors.totalDesksCount}</p>
           ) : null}
         </div>
 
-        {/* usableDesk input */}
+        {/* usableDesksCount input */}
         <div className="w-52 h-10">
           <input
-            id="usableDesk"
-            name="usableDesk"
+            id="usableDesksCount"
+            name="usableDesksCount"
             type="text"
             placeholder="Usable Desk"
             className="p-2"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.usableDesk}
+            value={formik.values.usableDesksCount}
           />
-          {/* usableDesk errors */}
-          {formik.touched.usableDesk && formik.errors.usableDesk ? (
-            <p className="text-red-500 text-xs">{formik.errors.usableDesk}</p>
+          {/* usableDesksCount errors */}
+          {formik.touched.usableDesksCount && formik.errors.usableDesksCount ? (
+            <p className="text-red-500 text-xs">{formik.errors.usableDesksCount}</p>
           ) : null}
         </div>
 
-        {/* office admin input */}
+        {/* buildingId input */}
         <div className="w-52 h-10">
           <select
             className="w-full h-full"
-            id="oadmin"
-            name="oadmin"
-            value={formik.values.oadmin}
+            id="officeAdminId"
+            name="officeAdminId"
+            value={formik.values.officeAdminId}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
-            <option value="">Select Office Admin</option>
-            {user.map((data) =>
-              data.role == "admin" ? (
-                <option value={`${data.firstname} ${data.lastname}`}>
-                  {data.firstname} {data.lastname}
-                </option>
-              ) : null
-            )}
+            <option value="">Select Office</option>
+            {officeAdminId.map((data) => (
+              <option value={data.id}>{data.firstname} {data.lastname}</option>
+            ))}
           </select>
-          {/* oadmin errors */}
-          {formik.touched.oadmin && formik.errors.oadmin ? (
-            <p className="text-red-500 text-xs">{formik.errors.oadmin}</p>
+          {/* buildingId errors */}
+          {formik.touched.officeAdminId && formik.errors.officeAdminId ? (
+            <p className="text-red-500 text-xs">{formik.errors.officeAdminId}</p>
           ) : null}
         </div>
 

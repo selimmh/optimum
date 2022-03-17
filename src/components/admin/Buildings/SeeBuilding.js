@@ -28,20 +28,20 @@ function SeeBuilding() {
   ChartJS.register(ArcElement, Tooltip, Legend);
 
   const data = {
-    labels: ["Red", "Blue", "Yellow"],
+    labels: ["Occupied", "Free"],
     datasets: [
       {
         label: "# of Votes",
-        data: [10, 50, 100],
+        data: [building.occupationPercentage, 100 - building.occupationPercentage],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
+
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
+
         ],
         borderWidth: 1,
       },
@@ -50,16 +50,14 @@ function SeeBuilding() {
 
   return (
     // main contaienr
-    <div className="pl-60 w-full h-screen flex flex-col p-12 ">
+    <div className="pl-60 w-full h-screen flex flex-col p-12 items-center justify-center">
       <h1 className="text-2xl mb-3">Metrics for {building.name}</h1>
-      <h1>officesNo: {building.officesNo}</h1>
-      <h1>totalDesksCount: {building.totalDesksCount}</h1>
-      <h1>usableDesksCount: {building.usableDesksCount}</h1>
-      <h1>freeDesksCount: {building.freeDesksCount}</h1>
-      <h1>occupiedDesksCount: {building.occupiedDesksCount}</h1>
-      <h1>occupationPercentage: {building.occupationPercentage}</h1>
+      <h1>Offices: {building.officesNo} | Total Desks: {building.totalDesksCount} | Usable Desks: {building.usableDesksCount} </h1>
+      <h1>Free Desks: {building.freeDesksCount} | Occupied Desks: {building.occupiedDesksCount} | Occupation %: {building.occupationPercentage} </h1>
+
+
       {/* <Doughnut data={10} /> */}
-      <div className="w-48 h-48">
+      <div className="w-96 h-96 ">
         <Pie data={data} />
       </div>
     </div>

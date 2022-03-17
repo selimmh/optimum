@@ -41,7 +41,7 @@ function AddBuilding(props) {
       // reset form
       formik.resetForm();
       // refresh page
-      window.location.reload(false);
+      // window.location.reload(false);
     },
   });
 
